@@ -1,0 +1,11 @@
+{
+    "name": "gungde/asetku",
+    "require": {
+        "simplesoftwareio/simple-qrcode": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "asetku\\": "src/"
+        }
+    }
+}
