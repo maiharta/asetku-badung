@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand" style="font-size: 48px; font-weight: bold;">
-              <img src="./assets/img/PemKab_Badung.png" alt="logo" width="150"/>
+              <img src="./assets/img/PemKab_Badung.png" alt="logo" width="150" />
               <p style="padding-top: 15px;">AsetKU</p>
             </div>
 
@@ -67,6 +67,7 @@ if (isset($_POST['submit'])) {
                       <label for="password" class="control-label">Password</label>
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <input type="checkbox" onclick="showHidePassword()">Show Password
                     <div class="invalid-feedback">
                       Mohon isi kata sandi
                     </div>
@@ -112,6 +113,16 @@ if (isset($_POST['submit'])) {
   <script src="assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
+  <script>
+    function showHidePassword() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
 </body>
 
 </html>

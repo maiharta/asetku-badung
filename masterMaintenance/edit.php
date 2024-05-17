@@ -23,7 +23,7 @@ $query = mysqli_query($connection, "SELECT * FROM datamt WHERE id_mt='$id_mt'");
               <input type="hidden" name="id_mt" value="<?= $row['id_mt'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
-                  <td>Nama Aset</td>
+                  <td style="width: 15%;">Nama Aset</td>
                   <td>
                     <select class="form-control" name="namaAset" required>
                       <?php

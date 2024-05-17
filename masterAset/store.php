@@ -2,21 +2,6 @@
 session_start();
 require_once '../helper/connection.php';
 
-// require '../vendor/autoload.php';
-
-
-// use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
-
-
-// $qr = QrCode::format('png')->size(200)->generate($data['kode_booking']);
-// Storage::disk('public')->put('/img/qrcodes/'.$data['kode_booking'].'.png', $qr);
-
-// $qrCodeImage = QrCode::format('png')->size(200)->generate($data['dataaset']);
-
-// // Convert the QR code image to a base64 string
-// $base64Image = base64_encode($qrCodeImage);
-
 $namaAset = $_POST['namaAset'];
 $totalBarang = $_POST['totalBarang'];
 $lokasiAset = $_POST['lokasiAset'];

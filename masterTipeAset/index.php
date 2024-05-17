@@ -32,7 +32,7 @@ $result = mysqli_query($connection, "SELECT * FROM mastertipeaset");
                     <td><?= $data['namaTipeAset'] ?></td>
                     <td><?= $data['jenisAset'] ?></td>
                     <td>
-                      <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_tipeAset=<?= $data['id_tipeAset'] ?>">
+                      <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_tipeAset=<?= $data['id_tipeAset'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?');">
                         <i class="fas fa-trash fa-fw"></i>
                       </a>
                       <a class="btn btn-sm btn-info" href="edit.php?id_tipeAset=<?= $data['id_tipeAset'] ?>">

@@ -23,7 +23,7 @@ $query = mysqli_query($connection, "SELECT * FROM mastertipeaset WHERE id_tipeAs
               <input type="hidden" name="id_tipeAset" value="<?= $row['id_tipeAset'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
-                  <td>Nama Tipe Aset</td>
+                  <td style="width: 15%;">Nama Tipe Aset</td>
                   <td><input class="form-control" type="text" name="namaTipeAset" size="20" required value="<?= $row['namaTipeAset'] ?>"></td>
                 </tr>
                 <tr>

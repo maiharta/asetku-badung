@@ -17,7 +17,7 @@ require_once '../helper/connection.php';
             <table cellpadding="8" class="w-100">
 
               <tr>
-                <td>Nama Aset</td>
+                <td style="width: 15%;">Nama Aset</td>
                 <td><input class="form-control" type="text" name="namaAset" size="20" required></td>
               </tr>
               <tr>
@@ -30,7 +30,7 @@ require_once '../helper/connection.php';
                   <select class="form-control" name="lokasiAset" required>
                     <?php
                     include('../helper/connection.php');
-                    $jenis = mysqli_query($connection, "select * from masterLokasi");
+                    $jenis = mysqli_query($connection, "select * from masterlokasi");
                     while ($j = mysqli_fetch_array($jenis)) {
                     ?>
                       <option value="<?php echo $j['namaLokasi'] ?>"><?php echo $j['namaLokasi'] ?></option>
@@ -87,25 +87,15 @@ require_once '../helper/connection.php';
                 <td><input class="form-control" type="text" name="deskripsi" size="20" required></td>
               </tr>
 
-              <tr>
-                <td>
-                  <input class="btn btn-primary" type="submit" name="proses" value="Simpan">
-                  <input class="btn btn-danger" type="reset" name="batal" value="Bersihkan">
-                      
-                  <!-- qr ga kegenerate -->
-                  <?php
-                  require '../vendor/autoload.php';
-
-                  use SimpleSoftwareIO\QrCode\Generator;
-
-                  $qrcode = new Generator;
-                  $qrcode->size(80)->generate('Make a qrcode without Laravel!');
-                  ?> 
-
-                </td>
-              </tr>
-
             </table>
+            </br>
+            <tr>
+              <td>
+                <input class="btn btn-primary" type="submit" name="proses" value="Simpan">
+                <input class="btn btn-danger" type="reset" name="batal" value="Bersihkan">
+              </td>
+            </tr>
+
           </form>
         </div>
       </div>

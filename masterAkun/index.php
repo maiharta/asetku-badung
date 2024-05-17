@@ -21,7 +21,6 @@ $result = mysqli_query($connection, "SELECT * FROM masteradmin");
                   <th>Nama</th>
                   <th>Email</th>
                   <th>Username</th>
-                  <th>Password</th>
                   <th style="width: 150">Aksi</th>
                 </tr>
               </thead>
@@ -34,11 +33,11 @@ $result = mysqli_query($connection, "SELECT * FROM masteradmin");
                     <td><?= $data['name'] ?></td>
                     <td><?= $data['email'] ?></td>
                     <td><?= $data['username'] ?></td>
-                    <td><?= $data['password'] ?></td>
                     <td>
-                      <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_akun=<?= $data['id_akun'] ?>">
+                      <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_akun=<?= $data['id_akun'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?');">
                         <i class="fas fa-trash fa-fw"></i>
                       </a>
+
                       <a class="btn btn-sm btn-info" href="edit.php?id_akun=<?= $data['id_akun'] ?>">
                         <i class="fas fa-edit fa-fw"></i>
                       </a>

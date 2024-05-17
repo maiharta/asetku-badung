@@ -23,7 +23,7 @@ $query = mysqli_query($connection, "SELECT * FROM masterlokasi WHERE id_lokasi='
               <input type="hidden" name="id_lokasi" value="<?= $row['id_lokasi'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
-                  <td>Nama Tempat Lokasi Aset</td>
+                  <td style="width: 15%;">Nama Tempat Lokasi Aset</td>
                   <td><input class="form-control" type="text" name="namaLokasi" size="20" required value="<?= $row['namaLokasi'] ?>"></td>
                 </tr>
                 <tr>

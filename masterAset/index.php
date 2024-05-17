@@ -2,13 +2,6 @@
 require_once '../layout/_top.php';
 require_once '../helper/connection.php';
 
-//Usage Outside of Laravel
-// use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
-// $qr = new Generator;
-// $qr = QrCode::format('png')->size(100)->generate($data['dataaset']);
-// Storage::disk('public')->put('/img/qrcodes/'.$data['dataaset'].'.png', $qr);
-
 $result = mysqli_query($connection, "SELECT * FROM dataaset");
 ?>
 
@@ -57,7 +50,7 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                     <td><?= $data['deskripsi'] ?></td>
                     <td><?= $data['gambar'] ?></td>
                     <td>
-                      <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_aset=<?= $data['id_aset'] ?>">
+                      <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_aset=<?= $data['id_aset'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?');">
                         <i class="fas fa-trash fa-fw"></i>
                       </a>
                       <a class="btn btn-sm btn-info" href="edit.php?id_aset=<?= $data['id_aset'] ?>">

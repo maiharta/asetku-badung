@@ -23,7 +23,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
               <input type="hidden" name="id_aset" value="<?= $row['id_aset'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
-                  <td>Nama Aset</td>
+                  <td style="width: 15%;">Nama Aset</td>
                   <td><input class="form-control" type="text" name="namaAset" size="20" required value="<?= $row['namaAset'] ?>"></td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                     <select class="form-control" name="lokasiAset" required>
                       <?php
                       include('../helper/connection.php');
-                      $jenis = mysqli_query($connection, "select * from masterLokasi");
+                      $jenis = mysqli_query($connection, "select * from masterlokasi");
                       while ($j = mysqli_fetch_array($jenis)) {
                       ?>
                         <option value="<?php echo $j['namaLokasi'] ?>"><?php echo $j['namaLokasi'] ?></option>

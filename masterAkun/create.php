@@ -17,7 +17,7 @@ require_once '../helper/connection.php';
             <table cellpadding="8" class="w-100">
 
               <tr>
-                <td>Nama</td>
+                <td style="width: 15%;">Nama</td>
                 <td><input class="form-control" type="text" name="name" size="20" required></td>
               </tr>
 
@@ -33,21 +33,37 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td>Password</td>
-                <td><input class="form-control" type="password" name="password" size="20" required></td>
-              </tr>
-              
-              <tr>
                 <td>
-                  <input class="btn btn-primary" type="submit" name="proses" value="Simpan">
-                  <input class="btn btn-danger" type="reset" name="batal" value="Bersihkan"></td>
+                  <input id="password" class="form-control" type="password" name="password" size="20" required>
+                  <input type="checkbox" onclick="showHidePassword()">Show Password
+                </td>
               </tr>
 
             </table>
+            </br>
+            <tr>
+              <td>
+                <input class="btn btn-primary" type="submit" name="proses" value="Simpan">
+                <input class="btn btn-danger" type="reset" name="batal" value="Bersihkan">
+              </td>
+            </tr>
+
           </form>
         </div>
       </div>
     </div>
 </section>
+
+<script>
+  function showHidePassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
 
 <?php
 require_once '../layout/_bottom.php';

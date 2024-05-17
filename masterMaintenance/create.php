@@ -17,7 +17,7 @@ require_once '../helper/connection.php';
             <table cellpadding="8" class="w-100">
 
               <tr>
-                <td>Nama Aset</td>
+                <td style="width: 15%;">Nama Aset</td>
                 <td>
                   <select class="form-control" name="namaAset" required>
                     <?php
@@ -56,14 +56,15 @@ require_once '../helper/connection.php';
                 <td><input class="form-control" type="text" name="status" size="20" required></td>
               </tr>
 
-              <tr>
-                <td>
-                  <input class="btn btn-primary" type="submit" name="proses" value="Simpan">
-                  <input class="btn btn-danger" type="reset" name="batal" value="Bersihkan">
-                </td>
-              </tr>
-
             </table>
+            </br>
+            <tr>
+              <td>
+                <input class="btn btn-primary" type="submit" name="proses" value="Simpan">
+                <input class="btn btn-danger" type="reset" name="batal" value="Bersihkan">
+              </td>
+            </tr>
+
           </form>
         </div>
       </div>

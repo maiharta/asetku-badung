@@ -2,12 +2,15 @@
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
       <a href="index.php" class="font-size:48px">
-        <img src="../assets/img/PemKab_Badung.png" alt="logo" width="50"/>
+        <img src="../assets/img/PemKab_Badung.png" alt="logo" width="50" />
         <p style="font-size: larger;">AsetKU</p>
       </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="index.php">EF</a>
+      <a href="index.php" class="font-size:40px">
+        <img src="../assets/img/PemKab_Badung.png" alt="logo" width="50" />
+        <p style="font-size: small;">AsetKU</p>
+      </a>
     </div>
     <ul class="sidebar-menu">
       <li class="menu-header">Dashboard</li>

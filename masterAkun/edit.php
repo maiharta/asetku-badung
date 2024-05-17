@@ -23,7 +23,7 @@ $query = mysqli_query($connection, "SELECT * FROM masteradmin WHERE id_akun='$id
               <input type="hidden" name="id_akun" value="<?= $row['id_akun'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
-                  <td>Nama</td>
+                  <td style="width: 15%;">Nama</td>
                   <td><input class="form-control" type="text" name="name" size="20" required value="<?= $row['name'] ?>"></td>
                 </tr>
                 <tr>
@@ -36,7 +36,10 @@ $query = mysqli_query($connection, "SELECT * FROM masteradmin WHERE id_akun='$id
                 </tr>
                 <tr>
                   <td>Passwrod</td>
-                  <td><input class="form-control" type="password" name="password" size="20" required value="<?= $row['password'] ?>"></td>
+                  <td>
+                    <input id="password" class="form-control" type="password" name="password" size="20" required value="<?= $row['password'] ?>">
+                    <input type="checkbox" onclick="showHidePassword()">Show Password
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -51,6 +54,17 @@ $query = mysqli_query($connection, "SELECT * FROM masteradmin WHERE id_akun='$id
       </div>
     </div>
 </section>
+
+<script>
+      function showHidePassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
 
 <?php
 require_once '../layout/_bottom.php';
