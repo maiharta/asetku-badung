@@ -12,7 +12,7 @@
         <p style="font-size: small;">AsetKU</p>
       </a>
     </div>
-    <ul class="sidebar-menu">
+    <ul class="sidebar-menu"></br>
       <li class="menu-header">Dashboard</li>
       <li><a class="nav-link" href="../"><i class="fas fa-fire"></i> <span>Home</span></a></li>
       <li class="menu-header">Main Feature</li>
@@ -25,13 +25,13 @@
           <li><a class="nav-link" href="../masterLokasi/index.php">Master Lokasi</a></li>
         </ul>
       </li>
-      <li class="dropdown">
+      <li class="menu">
         <a href="../masterAset/index.php"><i class="fas fa-columns"></i> <span>Master Aset</span></a>
       </li>
-      <li class="dropdown">
+      <li class="menu">
         <a href="../masterMaintenance/index.php"><i class="fas fa-columns"></i> <span>Master Maintenacne</span></a>
       </li>
-      <li class="dropdown">
+      <li class="menu">
         <a href="../.../index.php"><i class="fas fa-columns"></i> <span>Master laporan</span></a>
       </li>
     </ul>
