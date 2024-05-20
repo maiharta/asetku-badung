@@ -9,11 +9,11 @@ use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 
 $renderer = new ImageRenderer(
-    new RendererStyle(400),
+    new RendererStyle(100),
     new SvgImageBackEnd()
 );
 $writer = new Writer($renderer);
-$writer->writeFile('testing qr code', 'qrcode.svg');
+$writer->writeFile('testing qrcode 1', 'qrcode.svg');
 
 
 

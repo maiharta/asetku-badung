@@ -64,7 +64,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                     <select class="form-control" name="tipeAset" required>
                       <?php
                       include('../helper/connection.php');
-                      $jenis = mysqli_query($connection, "select * from masterTipeAset");
+                      $jenis = mysqli_query($connection, "select * from mastertipeaset");
                       while ($j = mysqli_fetch_array($jenis)) {
                       ?>
                         <option value="<?php echo $j['namaTipeAset'] ?>"><?php echo $j['namaTipeAset'] ?></option>
