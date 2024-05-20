@@ -4,18 +4,16 @@ require_once '../helper/connection.php';
 require '../vendor/autoload.php';
 
 use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 
 $renderer = new ImageRenderer(
     new RendererStyle(100),
-    new SvgImageBackEnd()
+    new ImagickImageBackEnd()
 );
 $writer = new Writer($renderer);
-$writer->writeFile('testing qrcode 1', 'qrcode.svg');
-
-
+$writer->writeFile('testing png qr code', 'qrcode1.png');
 
 // use BaconQrCode\Writer;
 // use BaconQrCode\Renderer\ImageRenderer;
@@ -48,4 +46,4 @@ $writer->writeFile('testing qrcode 1', 'qrcode.svg');
 
 ?>
 
-<img src="./qrcode.svg" alt="QR Code">
+<img src="./qrcode.png" alt="QR Code">

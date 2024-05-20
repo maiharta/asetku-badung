@@ -37,7 +37,7 @@ $query = mysqli_query($connection, "SELECT * FROM masteradmin WHERE id_akun='$id
                 <tr>
                   <td>Passwrod</td>
                   <td>
-                    <input id="password" class="form-control" type="password" name="password" size="20" required value="<?= $row['password'] ?>">
+                    <input id="password" class="form-control" type="password" name="password" size="20" required placeholder="Silahkan masukkan password baru untuk merubah password.">
                     <input type="checkbox" onclick="showHidePassword()">Show Password
                   </td>
                 </tr>

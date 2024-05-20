@@ -1,6 +1,19 @@
 <?php
 session_start();
 require_once '../helper/connection.php';
+require_once '../vendor/autoload.php';
+
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
+
+$renderer = new ImageRenderer(
+  new RendererStyle(100),
+  new ImagickImageBackEnd()
+);
+$writer = new Writer($renderer);
+$writer->writeFile('testing png qr code', 'qrcode.png');
 
 $id_aset = $_POST['id_aset'];
 $namaAset = $_POST['namaAset'];
@@ -14,7 +27,25 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
+$qrquery = "Nama Aset         : '$namaAset'
+Total Barang      : '$totalBarang'
+Lokasi Aset       : '$jenisAset'
+Jenis Aset        : '$tipeAset'
+Tipe Aset         : '$lokasiAset'
+Supplier          : '$supplier'
+Harga             : '$harga'
+Tanggal Pembelian : '$tanggalPembelian'
+Garansi           : '$garansi'
+Deskripsi         : '$deskripsi'";
 $query = mysqli_query($connection, "UPDATE dataaset SET namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', jenisAset = '$jenisAset', tipeAset = '$tipeAset', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi'  WHERE id_aset = '$id_aset'");
+
+$renderer = new ImageRenderer(
+  new RendererStyle(150),
+  new ImagickImageBackEnd()
+);
+$writer = new Writer($renderer);
+$writer->writeFile($qrquery, 'qrcode.png');
+
 if ($query) {
   $_SESSION['info'] = [
     'status' => 'success',
