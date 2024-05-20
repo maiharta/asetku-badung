@@ -85,7 +85,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   <td><input class="form-control" type="date" name="tanggalPembelian" size="20" required value="<?= $row['tanggalPembelian'] ?>"></td>
                 </tr>
                 <tr>
-                  <td>garansi</td>
+                  <td>Garansi</td>
                   <td><input class="form-control" type="text" name="garansi" size="20" required value="<?= $row['garansi'] ?>"></td>
                 </tr>
                 <tr>
