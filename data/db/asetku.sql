@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2024 at 06:51 AM
+-- Generation Time: May 22, 2024 at 11:00 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,18 +36,30 @@ CREATE TABLE `dataaset` (
   `tipeAset` varchar(255) NOT NULL,
   `supplier` varchar(255) NOT NULL,
   `harga` varchar(255) NOT NULL,
-  `tanggalPembelian` varchar(50) NOT NULL,
+  `tanggalPembelian` varchar(30) NOT NULL,
   `garansi` varchar(255) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL,
-  `gambar` varchar(255) NOT NULL
+  `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `dataaset`
 --
 
-INSERT INTO `dataaset` (`id_aset`, `namaAset`, `totalBarang`, `lokasiAset`, `jenisAset`, `tipeAset`, `supplier`, `harga`, `tanggalPembelian`, `garansi`, `deskripsi`, `gambar`) VALUES
-(3, 'testing', '2', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-07', '12 bulan', 'barang baru', '');
+INSERT INTO `dataaset` (`id_aset`, `namaAset`, `totalBarang`, `lokasiAset`, `jenisAset`, `tipeAset`, `supplier`, `harga`, `tanggalPembelian`, `garansi`, `deskripsi`) VALUES
+(3, 'testing', '2', 'ruang 2', 'meja', 'kursi', 'saya', '2000000', '2024-05-07', '12 bulan', 'barang baru'),
+(4, 'testing2', '9', 'ruang 6', 'elektronik', 'printer', 'saya2', '20000002', '2024-05-14', '12 bulan', 'barang baru'),
+(5, 'barang', '37', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-20', '12 bulan', 'barang baru'),
+(6, 'barang2', '35', 'ruang 12', 'komputer', 'komputer', 'saya2', '2000000', '2024-05-20', '12 bulan', 'barang baru'),
+(7, 'barang7', '46', 'ruang 2', 'meja', 'komputer', 'saya3', '2000000', '2024-05-25', '12 bulan', 'barang baru'),
+(8, 'testing5', '30', 'ruang 2', 'komputer', 'komputer', 'dia1', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
+(9, 'testing', '2', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
+(10, 'testing10', '30', 'ruang 2', 'komputer', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
+(11, 'testing11', '22', 'ruang 2', 'komputer', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
+(12, 'barang12', '30', 'ruang 2', 'komputer', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
+(13, 'gambartest1', '1', 'ruang 12', 'komputer', 'komputer', 'saya', '2000000', '2024-06-08', '12 bulan', 'barang baru'),
+(14, 'testing unit 1', '30', 'ruang 2', 'meja', 'komputer', 'dia1', '2000000', '2024-05-31', '12 bulan', 'barang baru'),
+(15, 'testing unit add error', '1', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-22', '12 bulan', 'barang baru'),
+(16, 'testing catch ', '1', 'ruang 2', 'meja', 'komputer', 'dia1', '2000000', '2024-05-22', '12 bulan', 'ini jelas barang baru');
 
 -- --------------------------------------------------------
 
@@ -82,7 +94,7 @@ INSERT INTO `datamt` (`id_mt`, `namaAset`, `biayaMt`, `tanggalMulai`, `tanggalSe
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -111,16 +123,13 @@ CREATE TABLE `masteradmin` (
 --
 
 INSERT INTO `masteradmin` (`id_akun`, `name`, `email`, `username`, `password`) VALUES
-(233, 'zxcvb', 'admin@gmail.com', 'admin', 'asdfg'),
+(233, 'zxcvb', 'admin@gmail.com', 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'),
 (234, 'gungde321', 'admin321@gmail.com', 'admin321', 'admin321'),
 (237, 'gungde234', 'admin@gmail.com', 'nohaha', 'admin'),
 (238, 'zxcvb', 'zxcvb@gmail.com', 'zxcvb', 'sssssss'),
-(239, 'zxcvb', 'zxcvb@gmail.com', 'zxcvb', 'sssssss'),
-(240, 'gungde11111333333456', 'adminssssssss2314@gmail.com', '123321', '31231'),
 (242, 'poiuy', 'admin1@gmail.com', 'qwert', 'qwettt'),
 (243, 'qqwwweeee', 'admin@gmail.com', 'admin', 'sssssss'),
 (244, 'gungde1234567', 'admin567@gmail.com', 'admin777', 'admin777'),
-(245, 'gungde12345', 'admin@gmail.com', 'mnbv', 'asdfg'),
 (247, 'gungdeEdit', 'zxcvb@gmail.com', 'admin', 'ddddddddd');
 
 -- --------------------------------------------------------
@@ -143,7 +152,8 @@ INSERT INTO `masterjenisaset` (`id_jenisAset`, `namaJenisAset`) VALUES
 (3, 'komputer'),
 (4, 'kursi'),
 (5, 'monitor'),
-(7, 'kursi');
+(7, 'kursi'),
+(8, 'elektronik');
 
 -- --------------------------------------------------------
 
@@ -163,7 +173,8 @@ CREATE TABLE `masterlokasi` (
 INSERT INTO `masterlokasi` (`id_lokasi`, `namaLokasi`) VALUES
 (2, 'ruang 2'),
 (3, 'ruang baru'),
-(4, 'ruang 12');
+(4, 'ruang 12'),
+(5, 'ruang 6');
 
 -- --------------------------------------------------------
 
@@ -185,7 +196,8 @@ INSERT INTO `mastertipeaset` (`id_tipeAset`, `namaTipeAset`, `jenisAset`) VALUES
 (3, 'komputer', 'komputer'),
 (4, 'meja', 'meja'),
 (5, 'kursi', 'kursi'),
-(6, 'monitor1', 'komputer');
+(6, 'monitor1', 'komputer'),
+(7, 'printer', 'elektronik');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +253,7 @@ ALTER TABLE `mastertipeaset`
 -- AUTO_INCREMENT for table `dataaset`
 --
 ALTER TABLE `dataaset`
-  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `datamt`
@@ -259,25 +271,25 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `masteradmin`
 --
 ALTER TABLE `masteradmin`
-  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
+  MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 
 --
 -- AUTO_INCREMENT for table `masterjenisaset`
 --
 ALTER TABLE `masterjenisaset`
-  MODIFY `id_jenisAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_jenisAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `masterlokasi`
 --
 ALTER TABLE `masterlokasi`
-  MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mastertipeaset`
 --
 ALTER TABLE `mastertipeaset`
-  MODIFY `id_tipeAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_tipeAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
