@@ -79,7 +79,7 @@ require_once '../helper/connection.php';
                 <td><input class="form-control" type="date" name="tanggalPembelian" size="20" required></td>
               </tr>
               <tr>
-                <td>garansi</td>
+                <td>Garansi</td>
                 <td><input class="form-control" type="text" name="garansi" size="20" required></td>
               </tr>
               <tr>

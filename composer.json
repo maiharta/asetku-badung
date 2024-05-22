@@ -6,6 +6,7 @@
         }
     },
     "require": {
-        "bacon/bacon-qr-code": "^3.0"
+        "bacon/bacon-qr-code": "^3.0",
+        "tecnickcom/tcpdf": "^6.7"
     }
 }

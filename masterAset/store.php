@@ -19,16 +19,16 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
-// $qrquery = "Nama Aset         : '$namaAset'
-// Total Barang      : '$totalBarang'
-// Lokasi Aset       : '$jenisAset'
-// Jenis Aset        : '$tipeAset'
-// Tipe Aset         : '$lokasiAset'
-// Supplier          : '$supplier'
-// Harga             : '$harga'
-// Tanggal Pembelian : '$tanggalPembelian'
-// Garansi           : '$garansi'
-// Deskripsi         : '$deskripsi'";
+// $qrquery = "Nama Aset         : {$row['namaAset']}
+// Total Barang      : {$row['totalBarang']}
+// Lokasi Aset       : {$row['lokasiAset']}
+// Jenis Aset        : {$row['jenisAset']}
+// Tipe Aset         : {$row['tipeAset']}
+// Supplier          : {$row['supplier']}
+// Harga             : {$row['harga']}
+// Tanggal Pembelian : {$row['tanggalPembelian']}
+// Garansi           : {$row['garansi']}
+// Deskripsi         : {$row['deskripsi']}";
 $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, jenisAset, tipeAset, supplier, harga, tanggalPembelian, garansi, deskripsi) value('$namaAset', '$totalBarang', '$lokasiAset', '$jenisAset', '$tipeAset', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi')");
 
 // $renderer = new ImageRenderer(
@@ -36,7 +36,11 @@ $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, 
 //   new ImagickImageBackEnd()
 // );
 // $writer = new Writer($renderer);
-// $writer->writeFile($qrquery, 'qrcode.png');
+// $writer->writeFile($qrquery, 'storage/qrcode.png');
+
+// $qrCodeImage = 'storage/qrcode.png';
+// $qrCodeBase64 = base64_encode(file_get_contents($qrCodeImage));
+
 
 if ($query) {
   $_SESSION['info'] = [
@@ -44,10 +48,10 @@ if ($query) {
     'message' => 'Berhasil menambah data'
   ];
   header('Location: ./index.php');
-                                            } else {
-                                              $_SESSION['info'] = [
-                                                'status' => 'failed',
-                                                'message' => mysqli_error($connection)
-                                              ];
-                                              header('Location: ./index.php');
-                                            }
+} else {
+  $_SESSION['info'] = [
+    'status' => 'failed',
+    'message' => mysqli_error($connection)
+  ];
+  header('Location: ./index.php');
+}
