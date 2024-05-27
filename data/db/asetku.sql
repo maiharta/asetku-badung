@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 07:53 AM
+-- Generation Time: May 27, 2024 at 09:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,7 +63,10 @@ INSERT INTO `dataaset` (`id_aset`, `namaAset`, `totalBarang`, `lokasiAset`, `jen
 (16, 'testing catch ', '1', 'ruang 2', 'meja', 'komputer', NULL, 'dia1', '2000000', '2024-05-22', '12 bulan', 'ini jelas barang baru', NULL),
 (17, 'testing', '30', 'ruang 2', 'meja', 'komputer', NULL, 'saya', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL),
 (18, 'mobil', '1', 'ruang baru', 'kendaraan', 'mobil', 'aaaabbbbcccc1111', 'saya', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL),
-(19, 'mobil1', '2', 'ruang baru', 'kendaraan', 'mobil', 'samsat2027', 'dia1', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL);
+(19, 'mobil1', '2', 'ruang baru', 'kendaraan', 'mobil', 'samsat2027', 'dia1', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL),
+(20, 'testing field samsat', '2 barang', 'ruang baru', 'komputer', 'komputer', '', 'mereka', '200000', '2024-05-26', '20 bulan', 'ssssss', NULL),
+(21, 'testing console log', '1', 'ruang baru', 'komputer', 'komputer', NULL, '111', '200000', '2024-05-20', '20', 'sssssssssssss', NULL),
+(22, 'testing', '2', 'ruang 2', 'meja', '', NULL, 'ssss', '90000', '2024-05-28', '30', 'aaaaaaaa', NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +261,7 @@ ALTER TABLE `mastertipeaset`
 -- AUTO_INCREMENT for table `dataaset`
 --
 ALTER TABLE `dataaset`
-  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `datamt`
