@@ -33,9 +33,8 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                 <tr>
                   <td>Select Lokasi Aset</td>
                   <td>
-                    <select class="form-control" name="lokasiAset" required>
+                    <select class="form-control" name="lokasiAset" required >
                       <?php
-                      include('../helper/connection.php');
                       $jenis = mysqli_query($connection, "select * from masterlokasi");
                       while ($j = mysqli_fetch_array($jenis)) {
                       ?>
@@ -49,7 +48,6 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   <td>
                     <select class="form-control" name="jenisAset" required>
                       <?php
-                      include('../helper/connection.php');
                       $jenis = mysqli_query($connection, "select * from masterjenisaset");
                       while ($j = mysqli_fetch_array($jenis)) {
                       ?>
@@ -63,7 +61,6 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   <td>
                     <select class="form-control" name="tipeAset" required>
                       <?php
-                      include('../helper/connection.php');
                       $jenis = mysqli_query($connection, "select * from mastertipeaset");
                       while ($j = mysqli_fetch_array($jenis)) {
                       ?>

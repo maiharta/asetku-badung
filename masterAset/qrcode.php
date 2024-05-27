@@ -22,7 +22,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
             <div class="card">
                 <div class="card-body">
                     <!-- // Form -->
-                    <form action="./update.php" method="post">
+                    <form action="./update.php" method="get">
                         <?php
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
