@@ -33,12 +33,13 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                 <tr>
                   <td>Select Lokasi Aset</td>
                   <td>
-                    <select class="form-control" name="lokasiAset" required >
+                    <select class="form-control" name="lokasiAset" id="lokasiAset" required>
                       <?php
                       $jenis = mysqli_query($connection, "select * from masterlokasi");
                       while ($j = mysqli_fetch_array($jenis)) {
+                        $selected = ($j['namaLokasi'] == $row['lokasiAset']) ? 'selected' : '';
                       ?>
-                        <option value="<?php echo $j['namaLokasi'] ?>"><?php echo $j['namaLokasi'] ?></option>
+                        <option value="<?php echo $j['namaLokasi'] ?>" <?php echo $selected ?>><?php echo $j['namaLokasi'] ?></option>
                       <?php } ?>
                     </select>
                   </td>
@@ -46,12 +47,13 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                 <tr>
                   <td>Select Jenis Aset</td>
                   <td>
-                    <select class="form-control" name="jenisAset" required>
+                    <select class="form-control" name="jenisAset" id="jenisAset" required>
                       <?php
                       $jenis = mysqli_query($connection, "select * from masterjenisaset");
                       while ($j = mysqli_fetch_array($jenis)) {
+                        $selected = ($j['namaJenisAset'] == $row['jenisAset']) ? 'selected' : '';
                       ?>
-                        <option value="<?php echo $j['namaJenisAset'] ?>"><?php echo $j['namaJenisAset'] ?></option>
+                        <option value="<?php echo $j['namaJenisAset'] ?>" <?php echo $selected ?>><?php echo $j['namaJenisAset'] ?></option>
                       <?php } ?>
                     </select>
                   </td>
@@ -59,14 +61,16 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                 <tr>
                   <td>Select Tipe Aset</td>
                   <td>
-                    <select class="form-control" name="tipeAset" required>
+                    <select class="form-control" name="tipeAset" id="tipeAset" required>
                       <?php
                       $jenis = mysqli_query($connection, "select * from mastertipeaset");
                       while ($j = mysqli_fetch_array($jenis)) {
+                        $selected = ($j['namaTipeAset'] == $row['tipeAset']) ? 'selected' : '';
                       ?>
-                        <option value="<?php echo $j['namaTipeAset'] ?>"><?php echo $j['namaTipeAset'] ?></option>
+                        <option value="<?php echo $j['namaTipeAset'] ?>" <?php echo $selected ?>><?php echo $j['namaTipeAset'] ?></option>
                       <?php } ?>
                     </select>
+                    <!-- <input class="form-control" type="text" name="samsat" size="20" required value="< ?= $row['samsat'] ?>" disabled> -->
                   </td>
                 </tr>
                 <tr>

@@ -29,7 +29,6 @@ require_once '../helper/connection.php';
                 <td>
                   <select class="form-control" name="lokasiAset" required>
                     <?php
-                    include('../helper/connection.php');
                     $jenis = mysqli_query($connection, "select * from masterlokasi");
                     while ($j = mysqli_fetch_array($jenis)) {
                     ?>
@@ -43,7 +42,6 @@ require_once '../helper/connection.php';
                 <td>
                   <select class="form-control" name="jenisAset" required>
                     <?php
-                    include('../helper/connection.php');
                     $jenis = mysqli_query($connection, "select * from masterjenisaset");
                     while ($j = mysqli_fetch_array($jenis)) {
                     ?>
@@ -57,13 +55,13 @@ require_once '../helper/connection.php';
                 <td>
                   <select class="form-control" name="tipeAset" required>
                     <?php
-                    include('../helper/connection.php');
                     $jenis = mysqli_query($connection, "select * from mastertipeaset");
                     while ($j = mysqli_fetch_array($jenis)) {
                     ?>
                       <option value="<?php echo $j['namaTipeAset'] ?>"><?php echo $j['namaTipeAset'] ?></option>
                     <?php } ?>
                   </select>
+                  <!-- <input class="form-control" placeholder="Data Samsat Kendaraan" type="text" name="samsat" size="20" required disabled> -->
                 </td>
               </tr>
               <tr>

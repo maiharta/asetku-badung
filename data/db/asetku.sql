@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 11:00 AM
+-- Generation Time: May 27, 2024 at 07:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,32 +34,36 @@ CREATE TABLE `dataaset` (
   `lokasiAset` varchar(255) NOT NULL,
   `jenisAset` varchar(255) NOT NULL,
   `tipeAset` varchar(255) NOT NULL,
+  `samsat` varchar(60) DEFAULT NULL,
   `supplier` varchar(255) NOT NULL,
   `harga` varchar(255) NOT NULL,
   `tanggalPembelian` varchar(30) NOT NULL,
   `garansi` varchar(255) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL
+  `deskripsi` varchar(255) NOT NULL,
+  `gambar` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `dataaset`
 --
 
-INSERT INTO `dataaset` (`id_aset`, `namaAset`, `totalBarang`, `lokasiAset`, `jenisAset`, `tipeAset`, `supplier`, `harga`, `tanggalPembelian`, `garansi`, `deskripsi`) VALUES
-(3, 'testing', '2', 'ruang 2', 'meja', 'kursi', 'saya', '2000000', '2024-05-07', '12 bulan', 'barang baru'),
-(4, 'testing2', '9', 'ruang 6', 'elektronik', 'printer', 'saya2', '20000002', '2024-05-14', '12 bulan', 'barang baru'),
-(5, 'barang', '37', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-20', '12 bulan', 'barang baru'),
-(6, 'barang2', '35', 'ruang 12', 'komputer', 'komputer', 'saya2', '2000000', '2024-05-20', '12 bulan', 'barang baru'),
-(7, 'barang7', '46', 'ruang 2', 'meja', 'komputer', 'saya3', '2000000', '2024-05-25', '12 bulan', 'barang baru'),
-(8, 'testing5', '30', 'ruang 2', 'komputer', 'komputer', 'dia1', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
-(9, 'testing', '2', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
-(10, 'testing10', '30', 'ruang 2', 'komputer', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
-(11, 'testing11', '22', 'ruang 2', 'komputer', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
-(12, 'barang12', '30', 'ruang 2', 'komputer', 'komputer', 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru'),
-(13, 'gambartest1', '1', 'ruang 12', 'komputer', 'komputer', 'saya', '2000000', '2024-06-08', '12 bulan', 'barang baru'),
-(14, 'testing unit 1', '30', 'ruang 2', 'meja', 'komputer', 'dia1', '2000000', '2024-05-31', '12 bulan', 'barang baru'),
-(15, 'testing unit add error', '1', 'ruang 2', 'meja', 'komputer', 'saya', '2000000', '2024-05-22', '12 bulan', 'barang baru'),
-(16, 'testing catch ', '1', 'ruang 2', 'meja', 'komputer', 'dia1', '2000000', '2024-05-22', '12 bulan', 'ini jelas barang baru');
+INSERT INTO `dataaset` (`id_aset`, `namaAset`, `totalBarang`, `lokasiAset`, `jenisAset`, `tipeAset`, `samsat`, `supplier`, `harga`, `tanggalPembelian`, `garansi`, `deskripsi`, `gambar`) VALUES
+(3, 'testing', '2', 'ruang 2', 'kursi', 'kursi', NULL, 'saya', '2000000', '2024-05-07', '12 bulan', 'barang baru', NULL),
+(4, 'testing2', '9', 'ruang 6', 'elektronik', 'printer', NULL, 'saya2', '20000002', '2024-05-14', '12 bulan', 'barang baru', NULL),
+(5, 'barang', '37', 'ruang 2', 'meja', 'komputer', NULL, 'saya', '2000000', '2024-05-20', '12 bulan', 'barang baru', NULL),
+(6, 'barang2', '35', 'ruang 12', 'komputer', 'komputer', NULL, 'saya2', '2000000', '2024-05-20', '12 bulan', 'barang baru', NULL),
+(7, 'barang7', '46', 'ruang 2', 'meja', 'komputer', NULL, 'saya3', '2000000', '2024-05-25', '12 bulan', 'barang baru', NULL),
+(8, 'testing5', '30', 'ruang 2', 'komputer', 'komputer', NULL, 'dia1', '2000000', '2024-05-21', '12 bulan', 'barang baru', NULL),
+(9, 'testing', '2', 'ruang 2', 'meja', 'komputer', NULL, 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru', NULL),
+(10, 'testing10', '30', 'ruang 2', 'komputer', 'komputer', NULL, 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru', NULL),
+(11, 'testing11', '22', 'ruang 2', 'komputer', 'komputer', NULL, 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru', NULL),
+(12, 'barang12', '30', 'ruang 2', 'komputer', 'komputer', NULL, 'saya', '2000000', '2024-05-21', '12 bulan', 'barang baru', NULL),
+(14, 'testing unit 1', '30', 'ruang 2', 'meja', 'komputer', NULL, 'dia1', '2000000', '2024-05-31', '12 bulan', 'barang baru', NULL),
+(15, 'testing unit add error', '1', 'ruang 2', 'meja', 'komputer', NULL, 'saya', '2000000', '2024-05-22', '12 bulan', 'barang baru', NULL),
+(16, 'testing catch ', '1', 'ruang 2', 'meja', 'komputer', NULL, 'dia1', '2000000', '2024-05-22', '12 bulan', 'ini jelas barang baru', NULL),
+(17, 'testing', '30', 'ruang 2', 'meja', 'komputer', NULL, 'saya', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL),
+(18, 'mobil', '1', 'ruang baru', 'kendaraan', 'mobil', 'aaaabbbbcccc1111', 'saya', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL),
+(19, 'mobil1', '2', 'ruang baru', 'kendaraan', 'mobil', 'samsat2027', 'dia1', '2000000', '2024-05-27', '12 bulan', 'barang baru', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,7 +133,6 @@ INSERT INTO `masteradmin` (`id_akun`, `name`, `email`, `username`, `password`) V
 (238, 'zxcvb', 'zxcvb@gmail.com', 'zxcvb', 'sssssss'),
 (242, 'poiuy', 'admin1@gmail.com', 'qwert', 'qwettt'),
 (243, 'qqwwweeee', 'admin@gmail.com', 'admin', 'sssssss'),
-(244, 'gungde1234567', 'admin567@gmail.com', 'admin777', 'admin777'),
 (247, 'gungdeEdit', 'zxcvb@gmail.com', 'admin', 'ddddddddd');
 
 -- --------------------------------------------------------
@@ -153,7 +156,8 @@ INSERT INTO `masterjenisaset` (`id_jenisAset`, `namaJenisAset`) VALUES
 (4, 'kursi'),
 (5, 'monitor'),
 (7, 'kursi'),
-(8, 'elektronik');
+(8, 'elektronik'),
+(10, 'kendaraan');
 
 -- --------------------------------------------------------
 
@@ -197,7 +201,8 @@ INSERT INTO `mastertipeaset` (`id_tipeAset`, `namaTipeAset`, `jenisAset`) VALUES
 (4, 'meja', 'meja'),
 (5, 'kursi', 'kursi'),
 (6, 'monitor1', 'komputer'),
-(7, 'printer', 'elektronik');
+(7, 'printer', 'elektronik'),
+(8, 'mobil', 'kendaraan');
 
 --
 -- Indexes for dumped tables
@@ -253,7 +258,7 @@ ALTER TABLE `mastertipeaset`
 -- AUTO_INCREMENT for table `dataaset`
 --
 ALTER TABLE `dataaset`
-  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `datamt`
@@ -277,7 +282,7 @@ ALTER TABLE `masteradmin`
 -- AUTO_INCREMENT for table `masterjenisaset`
 --
 ALTER TABLE `masterjenisaset`
-  MODIFY `id_jenisAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_jenisAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `masterlokasi`
@@ -289,7 +294,7 @@ ALTER TABLE `masterlokasi`
 -- AUTO_INCREMENT for table `mastertipeaset`
 --
 ALTER TABLE `mastertipeaset`
-  MODIFY `id_tipeAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_tipeAset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

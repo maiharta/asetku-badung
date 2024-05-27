@@ -25,7 +25,6 @@ require_once '../helper/connection.php';
                 <td>
                   <select class="form-control" name="jenisAset" required>
                     <?php
-                    include('../helper/connection.php');
                     $jenis = mysqli_query($connection, "select * from masterjenisaset");
                     while ($j = mysqli_fetch_array($jenis)) {
                     ?>
