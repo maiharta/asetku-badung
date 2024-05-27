@@ -70,7 +70,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                         <option value="<?php echo $j['namaTipeAset'] ?>" <?php echo $selected ?>><?php echo $j['namaTipeAset'] ?></option>
                       <?php } ?>
                     </select>
-                    <input class="form-control" type="text" name="samsat" size="20" required value="<?= $row['samsat'] ?>" hidden>
+                    <input class="form-control" type="text" name="samsat" size="20" required value="<?= $row['samsat'] ?>" disabled hidden>
                   </td>
                 </tr>
                 <tr>
