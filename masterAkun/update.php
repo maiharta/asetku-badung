@@ -11,17 +11,20 @@ $password = $_POST['password'];
 $password = 'password';
 $hashed_password = hash('sha256', $password);
 
-$query = mysqli_query($connection, "UPDATE masteradmin SET name = '$name', email = '$email', username = '$username', password = '$hashed_password' WHERE id_akun = '$id_akun'");
-if ($query) {
-  $_SESSION['info'] = [
-    'status' => 'success',
-    'message' => 'Berhasil mengubah data'
-  ];
-  header('Location: ./index.php');
-} else {
+try {
+  $query = mysqli_query($connection, "UPDATE masteradmin SET name = '$name', email = '$email', username = '$username', password = '$hashed_password' WHERE id_akun = '$id_akun'");
+  if ($query) {
+    $_SESSION['info'] = [
+      'status' => 'success',
+      'message' => 'Berhasil menambah data'
+    ];
+  } else {
+    throw new Exception(mysqli_error($connection));
+  }
+} catch (Exception $e) {
   $_SESSION['info'] = [
     'status' => 'failed',
-    'message' => mysqli_error($connection)
+    'message' => $e->getMessage()
   ];
-  header('Location: ./index.php');
 }
+header('Location: ./index.php');

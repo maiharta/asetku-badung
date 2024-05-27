@@ -14,18 +14,21 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
-$query = mysqli_query($connection, "UPDATE dataaset SET namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', jenisAset = '$jenisAset', tipeAset = '$tipeAset', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi'  WHERE id_aset = '$id_aset'");
+try {
+  $query = mysqli_query($connection, "UPDATE dataaset SET namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', jenisAset = '$jenisAset', tipeAset = '$tipeAset', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi'  WHERE id_aset = '$id_aset'");
 
-if ($query) {
-  $_SESSION['info'] = [
-    'status' => 'success',
-    'message' => 'Berhasil mengubah data'
-  ];
-  header('Location: ./index.php');
-} else {
+  if ($query) {
+    $_SESSION['info'] = [
+      'status' => 'success',
+      'message' => 'Berhasil mengubah data'
+    ];
+  } else {
+    throw new Exception(mysqli_error($connection));
+  }
+} catch (Exception $e) {
   $_SESSION['info'] = [
     'status' => 'failed',
-    'message' => mysqli_error($connection)
+    'message' => $e->getMessage()
   ];
-  header('Location: ./index.php');
 }
+header('Location: ./index.php');

@@ -10,17 +10,21 @@ $tanggalSelesai = $_POST['tanggalSelesai'];
 $keterangan = $_POST['keterangan'];
 $status = $_POST['status'];
 
-$query = mysqli_query($connection, "UPDATE datamt SET namaAset = '$namaAset', biayaMt = '$biayaMt', tanggalMulai = '$tanggalMulai', tanggalSelesai = '$tanggalSelesai', keterangan = '$keterangan', status = '$status'  WHERE id_mt = '$id_mt'");
-if ($query) {
-  $_SESSION['info'] = [
-    'status' => 'success',
-    'message' => 'Berhasil mengubah data'
-  ];
-  header('Location: ./index.php');
-} else {
+try {
+  $query = mysqli_query($connection, "UPDATE datamt SET namaAset = '$namaAset', biayaMt = '$biayaMt', tanggalMulai = '$tanggalMulai', tanggalSelesai = '$tanggalSelesai', keterangan = '$keterangan', status = '$status'  WHERE id_mt = '$id_mt'");
+  if ($query) {
+    $_SESSION['info'] = [
+      'status' => 'success',
+      'message' => 'Berhasil mengubah data'
+    ];
+  } else {
+    throw new Exception(mysqli_error($connection));
+  }
+} catch (Exception $e) {
   $_SESSION['info'] = [
     'status' => 'failed',
-    'message' => mysqli_error($connection)
+    'message' => $e->getMessage()
   ];
-  header('Location: ./index.php');
 }
+header('Location: ./index.php');
+?>

@@ -9,17 +9,21 @@ $tanggalSelesai = $_POST['tanggalSelesai'];
 $keterangan = $_POST['keterangan'];
 $status = $_POST['status'];
 
-$query = mysqli_query($connection, "insert into datamt(namaAset, biayaMt, tanggalMulai, tanggalSelesai, keterangan, status) value('$namaAset', '$biayaMt', '$tanggalMulai', '$tanggalSelesai', '$keterangan', '$status')");
-if ($query) {
+try {
+  $query = mysqli_query($connection, "insert into datamt(namaAset, biayaMt, tanggalMulai, tanggalSelesai, keterangan, status) value('$namaAset', '$biayaMt', '$tanggalMulai', '$tanggalSelesai', '$keterangan', '$status')");
+  if ($query) {
+    $_SESSION['info'] = [
+      'status' => 'success',
+      'message' => 'Berhasil menambah data'
+    ];
+  } else {
+    throw new Exception(mysqli_error($connection));
+  }
+} catch (Exception $e) {
   $_SESSION['info'] = [
-    'status' => 'success',
-    'message' => 'Berhasil menambah data'
+    'status' => 'failed',
+    'message' => $e->getMessage()
   ];
-  header('Location: ./index.php');
-                                            } else {
-                                              $_SESSION['info'] = [
-                                                'status' => 'failed',
-                                                'message' => mysqli_error($connection)
-                                              ];
-                                              header('Location: ./index.php');
-                                            }
+}
+header('Location: ./index.php');
+?>
