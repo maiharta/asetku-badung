@@ -14,7 +14,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
 
 <section class="section">
     <div class="section-header d-flex justify-content-between">
-        <h1>Ubah Data Aset</h1>
+        <h1>Data Aset dan QR Code</h1>
         <a href="./index.php" class="btn btn-light">Kembali</a>
     </div>
     <div class="row">

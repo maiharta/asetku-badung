@@ -2,6 +2,7 @@
 session_start();
 require_once '../helper/connection.php';
 
+
 $namaAset = $_POST['namaAset'];
 $totalBarang = $_POST['totalBarang'];
 $lokasiAset = $_POST['lokasiAset'];
