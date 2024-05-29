@@ -18,10 +18,10 @@
       var selectedTipe = $(this).val();
       if (selectedTipe === 'mobil' || selectedTipe === 'Mobil' || selectedTipe === 'motor' || selectedTipe === 'Motor') {
         $('input[name="samsat"]').prop('disabled', false);
-        $('input[name="samsat"]').prop('hidden', false);
+        $('tr[name="samsat"]').prop('hidden', false);
       } else {
         $('input[name="samsat"]').prop('disabled', true);
-        $('input[name="samsat"]').prop('hidden', true);
+        $('tr[name="samsat"]').prop('hidden', true);
       }
     });
   });

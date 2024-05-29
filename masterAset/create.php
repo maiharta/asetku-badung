@@ -61,8 +61,11 @@ require_once '../helper/connection.php';
                       <option value="<?php echo $j['namaTipeAset'] ?>"><?php echo $j['namaTipeAset'] ?></option>
                     <?php } ?>
                   </select>
-                  <input class="form-control" placeholder="Data Samsat Kendaraan" type="text" name="samsat" size="20" required disabled hidden>
                 </td>
+              </tr>
+              <tr name="samsat" hidden>
+                <td>Tanggal Samsat</td>
+                <td><input class="form-control" type="text" name="samsat" size="20" required disabled></td>
               </tr>
               <tr>
                 <td>Supplier</td>
