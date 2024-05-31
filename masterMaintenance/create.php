@@ -53,7 +53,13 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td>Status</td>
-                <td><input class="form-control" type="text" name="status" size="20" required></td>
+                <td>
+                  <select class="form-control" name="status" id="status" required>
+                    <option value="">--Pilih Status Maintenance--</option>
+                    <option value="Perbaikan">Perbaikan</option>
+                    <option value="Selesai">Selesai</option>
+                  </select>
+                </td>
               </tr>
 
             </table>

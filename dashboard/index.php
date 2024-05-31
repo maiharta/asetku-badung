@@ -3,14 +3,32 @@ require_once '../layout/_top.php';
 require_once '../helper/connection.php';
 
 $dataAset = mysqli_query($connection, "SELECT COUNT(*) FROM dataaset");
-$jenisAset = mysqli_query($connection, "SELECT COUNT(*) FROM masterjenisaset"); //change to total asset - maintenance asset
-$maintenance = mysqli_query($connection, "SELECT COUNT(*) FROM datamt");
+$jenisAset = mysqli_query($connection, "SELECT COUNT(*) FROM masterjenisaset");
 $lokasi = mysqli_query($connection, "SELECT COUNT(*) FROM masterlokasi");
+$maintenance = mysqli_query($connection, "SELECT status from datamt");
 
 $total_jenisAset = mysqli_fetch_array($jenisAset)[0];
 $total_dataAset = mysqli_fetch_array($dataAset)[0]; //change to total asset - maintenance asset
-$total_maintenance = mysqli_fetch_array($maintenance)[0];
 $total_lokasi = mysqli_fetch_array($lokasi)[0];
+
+$countPerbaikan = 0;
+$countSelesai = 0;
+
+foreach ($maintenance as $row) {
+  if ($row['status'] == "Perbaikan") {
+      $countPerbaikan++;
+  } elseif ($row['status'] == "Selesai") {
+      $countSelesai++;
+  }
+}
+
+$total = $countPerbaikan + $countSelesai;
+$different = $total_dataAset - $countPerbaikan;
+
+// echo "Total Perbaikan: $countPerbaikan<br>";
+// echo "Total Selesai: $countSelesai<br>";
+// echo "Total: $total";
+
 ?>
 
 <section class="section">
@@ -44,14 +62,14 @@ $total_lokasi = mysqli_fetch_array($lokasi)[0];
               <h4>Total Aset Aktif</h4>
             </div>
             <div class="card-body">
-              <?= $total_jenisAset ?>
+              <?= $different ?>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
 
+    <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-warning">
@@ -62,7 +80,7 @@ $total_lokasi = mysqli_fetch_array($lokasi)[0];
               <h4>Total Aset mainteance</h4>
             </div>
             <div class="card-body">
-              <?= $total_maintenance ?>
+              <?= $countPerbaikan ?>
             </div>
           </div>
         </div>
@@ -83,6 +101,8 @@ $total_lokasi = mysqli_fetch_array($lokasi)[0];
         </div>
       </div>
     </div>
+
+
   </div>
 </section>
 

@@ -25,13 +25,13 @@ $query = mysqli_query($connection, "SELECT * FROM datamt WHERE id_mt='$id_mt'");
                 <tr>
                   <td style="width: 15%;">Nama Aset</td>
                   <td>
-                    <select class="form-control" name="namaAset" required>
+                    <select class="form-control" name="namaAset" id="namaAset" required>
                       <?php
-                      include('../helper/connection.php');
                       $jenis = mysqli_query($connection, "select * from dataaset");
                       while ($j = mysqli_fetch_array($jenis)) {
+                        $selected = ($j['namaAset'] == $row['namaAset']) ? 'selected' : '';
                       ?>
-                        <option value="<?php echo $j['namaAset'] ?>"><?php echo $j['namaAset'] ?></option>
+                        <option value="<?php echo $j['namaAset'] ?>" <?php echo $selected ?>><?php echo $j['namaAset'] ?></option>
                       <?php } ?>
                     </select>
                   </td>
@@ -50,11 +50,20 @@ $query = mysqli_query($connection, "SELECT * FROM datamt WHERE id_mt='$id_mt'");
                 </tr>
                 <tr>
                   <td>Keterangan</td>
-                  <td><input class="form-control" type="text" name="status" size="20" required value="<?= $row['keterangan'] ?>"></td>
+                  <td><input class="form-control" type="text" name="keterangan" size="20" required value="<?= $row['keterangan'] ?>"></td>
                 </tr>
                 <tr>
                   <td>Status</td>
-                  <td><input class="form-control" type="text" name="status" size="20" required value="<?= $row['status'] ?>"></td>
+                  <td>
+                    <select class="form-control" name="status" id="status" required>
+                      <option value="Perbaikan" <?php if ($row['status'] == "Perbaikan") {
+                                                  echo "selected";
+                                                } ?>>Perbaikan</option>
+                      <option value="Selesai" <?php if ($row['status'] == "Selesai") {
+                                                echo "selected";
+                                              } ?>>Selesai</option>
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                   <td>
