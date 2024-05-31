@@ -15,17 +15,22 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
-$query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, jenisAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi) value('$namaAset', '$totalBarang', '$lokasiAset', '$jenisAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi')");
-if ($query) {
-    $_SESSION['info'] = [
-        'status' => 'success',
-        'message' => 'Berhasil menambah data'
-    ];
-    header('Location: ./index.php');
-} else {
+try {
+    $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, jenisAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi) value('$namaAset', '$totalBarang', '$lokasiAset', '$jenisAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi')");
+    if ($query) {
+        $_SESSION['info'] = [
+            'status' => 'success',
+            'message' => 'Berhasil menambah data'
+        ];
+    } else {
+        throw new Exception(mysqli_error($connection));
+    }
+} catch (Exception $e) {
+    error_log($e->getMessage(), 3, 'storage/error.log');
+
     $_SESSION['info'] = [
         'status' => 'failed',
-        'message' => mysqli_error($connection)
+        'message' => 'Gagal menambah data'
     ];
-    header('Location: ./index.php');
 }
+header('Location: ./index.php');

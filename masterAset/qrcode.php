@@ -48,6 +48,16 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                     <td>Select Tipe Aset</td>
                                     <td><input class="form-control" type="text" name="tipeAset" size="20" require value="<?= $row['tipeAset'] ?>" disabled /></td>
                                 </tr>
+                                <?php
+                                if (strtolower($row['tipeAset']) === 'mobil' || strtolower($row['tipeAset']) === 'motor') {
+                                    echo '<tr name="samsat">';
+                                } else {
+                                    echo '<tr name="samsat" style="display:none;">';
+                                }
+                                ?>
+                                <td>Samsat</td>
+                                <td><input class="form-control" type="text" name="samsat" size="20" require value="<?= $row['samsat'] ?>" disabled /></td>
+                                </tr>
                                 <tr>
                                     <td>Supplier</td>
                                     <td><input class="form-control" type="text" name="supplier" size="20" required value="<?= $row['supplier'] ?>" disabled></td>
@@ -70,27 +80,36 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                 </tr>
 
                                 <?php
-                                $qrquery = "Nama Aset         : {$row['namaAset']}
-Total Barang      : {$row['totalBarang']}
-Lokasi Aset       : {$row['lokasiAset']}
-Jenis Aset        : {$row['jenisAset']}
-Tipe Aset         : {$row['tipeAset']}
-Supplier          : {$row['supplier']}
-Harga             : {$row['harga']}
-Tanggal Pembelian : {$row['tanggalPembelian']}
-Garansi           : {$row['garansi']}
-Deskripsi         : {$row['deskripsi']}";
+                                try {
+                                    $qrquery = "{$row['namaAset']}
+{$row['totalBarang']},
+{$row['lokasiAset']},
+{$row['jenisAset']},
+{$row['tipeAset']},
+{$row['supplier']},
+{$row['harga']},
+{$row['tanggalPembelian']},
+{$row['garansi']},
+{$row['deskripsi']},
+{$row['samsat']}";
 
-                                $renderer = new ImageRenderer(
-                                    new RendererStyle(200),
-                                    new ImagickImageBackEnd()
-                                );
-                                $writer = new Writer($renderer);
-                                $file_direction = 'storage/qrcode.png';
-                                $writer->writeFile($qrquery, $file_direction);
+                                    $renderer = new ImageRenderer(
+                                        new RendererStyle(200),
+                                        new ImagickImageBackEnd()
+                                    );
+                                    $writer = new Writer($renderer);
+                                    $file_direction = 'storage/qrcode.png';
+                                    $writer->writeFile($qrquery, $file_direction);
 
-                                $qrCode = $writer->writeString($qrquery);
+                                    $qrCode = $writer->writeString($qrquery);
+                                } catch (Exception $e) {
+                                    error_log($e->getMessage(), 3, 'storage/errorQRcode.txt');
 
+                                    $_SESSION['info'] = [
+                                        'status' => 'failed',
+                                        'message' => 'Gagal menambah data'
+                                    ];
+                                }
                                 ?>
 
                                 <tr>

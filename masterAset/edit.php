@@ -72,9 +72,15 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                     </select>
                   </td>
                 </tr>
-                <tr name="samsat" hidden>
-                  <td>Tanggal Samsat</td>
-                  <td><input class="form-control" type="text" name="samsat" size="20" required value="<?= $row['samsat'] ?>" disabled></td>
+                <?php
+                if (strtolower($row['tipeAset']) === 'mobil' || strtolower($row['tipeAset']) === 'motor') {
+                  echo '<tr name="samsat">';
+                } else {
+                  echo '<tr name="samsat" style="display:none;">';
+                }
+                ?>
+                  <td>Samsat</td>
+                  <td><input class="form-control" type="text" name="samsat" size="20" require value="<?= $row['samsat'] ?>"/></td>
                 </tr>
                 <tr>
                   <td>Supplier</td>

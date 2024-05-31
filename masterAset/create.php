@@ -64,7 +64,7 @@ require_once '../helper/connection.php';
                 </td>
               </tr>
               <tr name="samsat" hidden>
-                <td>Tanggal Samsat</td>
+                <td>Samsat</td>
                 <td><input class="form-control" type="text" name="samsat" size="20" required disabled></td>
               </tr>
               <tr>

@@ -16,9 +16,11 @@ try {
     throw new Exception('No rows affected');
   }
 } catch (Exception $e) {
+  error_log($e->getMessage(), 3, 'storage/error.log');
+
   $_SESSION['info'] = [
     'status' => 'failed',
-    'message' => $e->getMessage()
+    'message' => 'Gagal menghapus data'
   ];
 }
 header('Location: ./index.php');

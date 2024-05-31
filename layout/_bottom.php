@@ -16,7 +16,7 @@
   $(document).ready(function() {
     $('select[name="tipeAset"]').change(function() {
       var selectedTipe = $(this).val();
-      if (selectedTipe === 'mobil' || selectedTipe === 'Mobil' || selectedTipe === 'motor' || selectedTipe === 'Motor') {
+      if (selectedTipe.toLowerCase() === 'mobil' || selectedTipe.toLowerCase() === 'motor') {
         $('input[name="samsat"]').prop('disabled', false);
         $('tr[name="samsat"]').prop('hidden', false);
       } else {
