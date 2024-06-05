@@ -35,59 +35,46 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   <td>
                     <select class="form-control" name="lokasiAset" id="lokasiAset" required>
                       <?php
-                      $jenis = mysqli_query($connection, "select * from masterlokasi");
-                      while ($j = mysqli_fetch_array($jenis)) {
-                        $selected = ($j['namaLokasi'] == $row['lokasiAset']) ? 'selected' : '';
+                      $lokasi = mysqli_query($connection, "select * from masterlokasi");
+                      while ($l = mysqli_fetch_array($lokasi)) {
+                        $selected = ($l['namaLokasi'] == $row['lokasiAset']) ? 'selected' : '';
                       ?>
-                        <option value="<?php echo $j['namaLokasi'] ?>" <?php echo $selected ?>><?php echo $j['namaLokasi'] ?></option>
+                        <option value="<?php echo $l['namaLokasi'] ?>" <?php echo $selected ?>><?php echo $l['namaLokasi'] ?></option>
                       <?php } ?>
                     </select>
                   </td>
                 </tr>
                 <tr>
-                  <td>Select Jenis Aset</td>
-                  <td>
-                    <select class="form-control" name="jenisAset" id="jenisAset" required>
-                      <?php
-                      $jenis = mysqli_query($connection, "select * from masterjenisaset");
-                      while ($j = mysqli_fetch_array($jenis)) {
-                        $selected = ($j['namaJenisAset'] == $row['jenisAset']) ? 'selected' : '';
-                      ?>
-                        <option value="<?php echo $j['namaJenisAset'] ?>" <?php echo $selected ?>><?php echo $j['namaJenisAset'] ?></option>
-                      <?php } ?>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Select Tipe Aset</td>
+                  <td>Tipe dan Jenis Aset</td>
                   <td>
                     <select class="form-control" name="tipeAset" id="tipeAset" required>
                       <?php
-                      $jenis = mysqli_query($connection, "select * from mastertipeaset");
-                      while ($j = mysqli_fetch_array($jenis)) {
-                        $selected = ($j['namaTipeAset'] == $row['tipeAset']) ? 'selected' : '';
+                      $tipe = mysqli_query($connection, "select * from mastertipeaset");
+                      while ($t = mysqli_fetch_array($tipe)) {
+                        $combinedValue = $t['namaTipeAset'] . ' (' . $t['jenisAset'] . ')';
+                        $selected = ($combinedValue == $row['tipeAset']) ? 'selected' : '';
                       ?>
-                        <option value="<?php echo $j['namaTipeAset'] ?>" <?php echo $selected ?>><?php echo $j['namaTipeAset'] ?></option>
+                        <option value="<?php echo $combinedValue ?>" <?php echo $selected ?>><?php echo $combinedValue ?></option>
                       <?php } ?>
                     </select>
                   </td>
                 </tr>
                 <?php
-                if (strtolower($row['tipeAset']) === 'mobil' || strtolower($row['tipeAset']) === 'motor') {
+                if (strtolower($row['tipeAset']) === 'mobil (kendaraan)' || strtolower($row['tipeAset']) === 'motor (kendaraan)' || strtolower($row['tipeAset']) === 'truck (kendaraan)') {
                   echo '<tr name="samsat">';
                 } else {
                   echo '<tr name="samsat" style="display:none;">';
                 }
                 ?>
-                  <td>Samsat</td>
-                  <td><input class="form-control" type="text" name="samsat" size="20" require value="<?= $row['samsat'] ?>"/></td>
+                  <td>Tanggal Samsat</td>
+                  <td><input class="form-control" type="date" name="samsat" size="20" require value="<?= $row['samsat'] ?>"/></td>
                 </tr>
                 <tr>
                   <td>Supplier</td>
                   <td><input class="form-control" type="text" name="supplier" size="20" required value="<?= $row['supplier'] ?>"></td>
                 </tr>
                 <tr>
-                  <td>harga</td>
+                  <td>Harga</td>
                   <td><input class="form-control" type="text" name="harga" size="20" required value="<?= $row['harga'] ?>"></td>
                 </tr>
                 <tr>

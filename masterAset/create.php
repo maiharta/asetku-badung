@@ -27,52 +27,42 @@ require_once '../helper/connection.php';
               <tr>
                 <td>Select Lokasi Aset</td>
                 <td>
-                  <select class="form-control" name="lokasiAset" required>
+                <select class="form-control" name="lokasiAset" required>
                     <?php
-                    $jenis = mysqli_query($connection, "select * from masterlokasi");
-                    while ($j = mysqli_fetch_array($jenis)) {
+                    $lokasi = mysqli_query($connection, "select * from masterlokasi");
+                    while ($l = mysqli_fetch_array($lokasi)) {
                     ?>
-                      <option value="<?php echo $j['namaLokasi'] ?>"><?php echo $j['namaLokasi'] ?></option>
+                      <option value="<?php echo $l['namaLokasi'] ?>"><?php echo $l['namaLokasi'] ?></option>
                     <?php } ?>
                   </select>
                 </td>
               </tr>
+              <!-- jenis aset auto select sesuai tipe aset -->
               <tr>
-                <td>Select Jenis Aset</td>
+                <td>Tipe dan Jenis Aset</td>
                 <td>
-                  <select class="form-control" name="jenisAset" required>
+                <select class="form-control" name="tipeAset" required>
                     <?php
-                    $jenis = mysqli_query($connection, "select * from masterjenisaset");
-                    while ($j = mysqli_fetch_array($jenis)) {
-                    ?>
-                      <option value="<?php echo $j['namaJenisAset'] ?>"><?php echo $j['namaJenisAset'] ?></option>
+                    $tipe = mysqli_query($connection, "select * from mastertipeaset");
+                    while ($t = mysqli_fetch_array($tipe)) {
+                      $combinedValue = $t['namaTipeAset'] . ' (' . $t['jenisAset'] . ')';
+                    ?> 
+                      <option value="<?php echo $combinedValue ?>"><?php echo $combinedValue ?></option>
                     <?php } ?>
                   </select>
                 </td>
               </tr>
-              <tr>
-                <td>Select Tipe Aset</td>
-                <td>
-                  <select class="form-control" name="tipeAset" required>
-                    <?php
-                    $jenis = mysqli_query($connection, "select * from mastertipeaset");
-                    while ($j = mysqli_fetch_array($jenis)) {
-                    ?>
-                      <option value="<?php echo $j['namaTipeAset'] ?>"><?php echo $j['namaTipeAset'] ?></option>
-                    <?php } ?>
-                  </select>
-                </td>
-              </tr>
+              <!-- auto show -->
               <tr name="samsat" hidden>
-                <td>Samsat</td>
-                <td><input class="form-control" type="text" name="samsat" size="20" required disabled></td>
+                <td>Tanggal Samsat</td>
+                <td><input class="form-control" type="date" name="samsat" size="20" required disabled></td>
               </tr>
               <tr>
                 <td>Supplier</td>
                 <td><input class="form-control" type="text" name="supplier" size="20" required></td>
               </tr>
               <tr>
-                <td>harga</td>
+                <td>Harga</td>
                 <td><input class="form-control" type="text" name="harga" size="20" required></td>
               </tr>
               <tr>

@@ -41,22 +41,23 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                     <td><input class="form-control" type="text" name="lokasiAset" size="20" require value="<?= $row['lokasiAset'] ?>" disabled /></td>
                                 </tr>
                                 <tr>
-                                    <td>Select Jenis Aset</td>
-                                    <td><input class="form-control" type="text" name="jenisAset" size="20" require value="<?= $row['jenisAset'] ?>" disabled /></td>
-                                </tr>
-                                <tr>
                                     <td>Select Tipe Aset</td>
                                     <td><input class="form-control" type="text" name="tipeAset" size="20" require value="<?= $row['tipeAset'] ?>" disabled /></td>
                                 </tr>
                                 <?php
-                                if (strtolower($row['tipeAset']) === 'mobil' || strtolower($row['tipeAset']) === 'motor') {
+                                if (strtolower($row['tipeAset']) === 'mobil (kendaraan)' || strtolower($row['tipeAset']) === 'motor (kendaraan)' || strtolower($row['tipeAset']) === 'truck (kendaraan)') {
                                     echo '<tr name="samsat">';
                                 } else {
                                     echo '<tr name="samsat" style="display:none;">';
                                 }
                                 ?>
-                                <td>Samsat</td>
-                                <td><input class="form-control" type="text" name="samsat" size="20" require value="<?= $row['samsat'] ?>" disabled /></td>
+                                <td>Tanggal Samsat</td>
+                                <?php
+                                $originalDate = $row['samsat'];
+
+                                $Samsat = date("d-m-Y", strtotime($originalDate));
+                                ?>
+                                <td><input class="form-control" type="text" name="samsat" size="20" require value="<?= $Samsat ?>" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td>Supplier</td>
@@ -80,43 +81,34 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                 </tr>
 
                                 <?php
-                                try {
-                                    $qrquery = "{$row['namaAset']}
-{$row['totalBarang']},
-{$row['lokasiAset']},
-{$row['jenisAset']},
-{$row['tipeAset']},
-{$row['supplier']},
-{$row['harga']},
-{$row['tanggalPembelian']},
-{$row['garansi']},
-{$row['deskripsi']},
-{$row['samsat']}";
 
-                                    $renderer = new ImageRenderer(
-                                        new RendererStyle(200),
-                                        new ImagickImageBackEnd()
-                                    );
-                                    $writer = new Writer($renderer);
-                                    $file_direction = 'storage/qrcode.png';
-                                    $writer->writeFile($qrquery, $file_direction);
+                                $qrquery = "Nama Aset : {$row['namaAset']}
+Total Aset : {$row['totalBarang']}
+Lokasi Aset : {$row['lokasiAset']}
+Tipe dan Jenis Aset : {$row['tipeAset']} {$row['samsat']}
+Supplier : {$row['supplier']}
+Harga : {$row['harga']}
+Tanggal Pembelian : {$row['tanggalPembelian']}
+Garansi : {$row['garansi']}
+Deskripsi : {$row['deskripsi']}";
 
-                                    $qrCode = $writer->writeString($qrquery);
-                                } catch (Exception $e) {
-                                    error_log($e->getMessage(), 3, 'storage/errorQRcode.txt');
+                                $renderer = new ImageRenderer(
+                                    new RendererStyle(200),
+                                    new ImagickImageBackEnd()
+                                );
+                                $writer = new Writer($renderer);
+                                $file_direction = 'QrCode.png';
+                                $writer->writeFile($qrquery, $file_direction);
 
-                                    $_SESSION['info'] = [
-                                        'status' => 'failed',
-                                        'message' => 'Gagal menambah data'
-                                    ];
-                                }
+                                $qrCode = $writer->writeString($qrquery);
+
                                 ?>
 
                                 <tr>
                                     <td>QR Code</td>
                                 </tr>
                                 <tr>
-                                    <td><img src="./storage/qrcode.png" alt="QR Code"></td>
+                                    <td><img src="QrCode.png"></td>
                                     <td><a href="./qrpdf.php" class="btn btn-light">Download PDF</a></td>
                                 </tr>
                                 <tr>

@@ -35,8 +35,18 @@ $result = mysqli_query($connection, "SELECT * FROM datamt");
                   <tr>
                     <td><?= $data['namaAset'] ?></td>
                     <td><?= $data['biayaMt'] ?></td>
-                    <td><?= $data['tanggalMulai'] ?></td>
-                    <td><?= $data['tanggalSelesai'] ?></td>
+                    <?php
+                    $originalDate = $data['tanggalMulai'];
+
+                    $Mulai = date("d-m-Y", strtotime($originalDate));
+                    ?>
+                    <td><?= $Mulai ?></td>
+                    <?php
+                    $originalDate = $data['tanggalSelesai'];
+
+                    $Selesai = date("d-m-Y", strtotime($originalDate));
+                    ?>
+                    <td><?= $Selesai ?></td>
                     <td><?= $data['keterangan'] ?></td>
                     <td><?= $data['status'] ?></td>
                     <td>

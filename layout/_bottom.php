@@ -16,7 +16,7 @@
   $(document).ready(function() {
     $('select[name="tipeAset"]').change(function() {
       var selectedTipe = $(this).val();
-      if (selectedTipe.toLowerCase() === 'mobil' || selectedTipe.toLowerCase() === 'motor') {
+      if (selectedTipe.toLowerCase() === 'mobil (kendaraan)' || selectedTipe.toLowerCase() === 'mobil (kendaraan)' || selectedTipe.toLowerCase() === 'truck (kendaraan)') {
         $('input[name="samsat"]').prop('disabled', false);
         $('tr[name="samsat"]').prop('hidden', false);
       } else {

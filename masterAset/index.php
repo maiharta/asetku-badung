@@ -20,9 +20,8 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                 <tr>
                   <th>Nama Aset</th>
                   <th>Total Barang</th>
-                  <th>Nama Lokasi Aset</th>
-                  <th>Nama Jenis Aset</th>
-                  <th>Nama Tipe Aset</th>
+                  <th>Lokasi Aset</th>
+                  <th>Tipe dan Jenis Aset</th>
                   <th>Supplier</th>
                   <th>Harga</th>
                   <th>Tanggal Pembelian</th>
@@ -41,11 +40,15 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                     <td><?= $data['namaAset'] ?></td>
                     <td><?= $data['totalBarang'] ?></td>
                     <td><?= $data['lokasiAset'] ?></td>
-                    <td><?= $data['jenisAset'] ?></td>
                     <td><?= $data['tipeAset'] ?></td>
                     <td><?= $data['supplier'] ?></td>
                     <td><?= $data['harga'] ?></td>
-                    <td><?= $data['tanggalPembelian'] ?></td>
+                    <?php
+                    $originalDate = $data['tanggalPembelian'];
+
+                    $Pembelian = date("d-m-Y", strtotime($originalDate));
+                    ?>
+                    <td><?= $Pembelian ?></td>
                     <td><?= $data['garansi'] ?></td>
                     <td><?= $data['deskripsi'] ?></td>
                     <td>

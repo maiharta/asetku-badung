@@ -37,7 +37,7 @@ require_once '../helper/connection.php';
               </tr>
 
               <tr>
-                <td>tanggal Mulai</td>
+                <td>Tanggal Mulai</td>
                 <td><input class="form-control" type="date" name="tanggalMulai" size="20" required></td>
               </tr>
 
