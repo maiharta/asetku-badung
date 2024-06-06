@@ -12,7 +12,6 @@ use BaconQrCode\Writer;
 $namaAset = $_POST['namaAset'];
 $totalBarang = $_POST['totalBarang'];
 $lokasiAset = $_POST['lokasiAset'];
-$jenisAset = $_POST['jenisAset'];
 $tipeAset = $_POST['tipeAset'];
 $samsat = $_POST['samsat'];
 $supplier = $_POST['supplier'];
@@ -49,7 +48,7 @@ $gambar = mysqli_real_escape_string($connection, $gambar);
 
 
 try {
-    $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, jenisAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$namaAset', '$totalBarang', '$lokasiAset', '$jenisAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$gambar')");
+    $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$gambar')");
     if ($query) {
         $_SESSION['info'] = [
             'status' => 'success',
