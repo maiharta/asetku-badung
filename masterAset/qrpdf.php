@@ -4,9 +4,9 @@ require_once('../vendor/tecnickcom/tcpdf/tcpdf.php');
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Your Name');
-$pdf->SetTitle('TCPDF Example');
-$pdf->SetSubject('TCPDF Tutorial');
+$pdf->SetAuthor('Aset Badung');
+$pdf->SetTitle('Aset Badung');
+$pdf->SetSubject('Aset Badung');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 $pdf->AddPage();
