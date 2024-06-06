@@ -18,7 +18,7 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td style="width: 15%;">Nama Tempat Lokasi Aset</td>
-                <td><input class="form-control" type="text" name="namaLokasi" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan nama tempat lokasi aset....." type="text" name="namaLokasi" size="20" required></td>
               </tr>
 
             </table>

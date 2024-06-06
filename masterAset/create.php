@@ -18,16 +18,17 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td style="width: 15%;">Nama Aset</td>
-                <td><input class="form-control" type="text" name="namaAset" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan nama aset....." type="text" name="namaAset" size="20" required></td>
               </tr>
               <tr>
                 <td>Total Barang</td>
-                <td><input class="form-control" type="text" name="totalBarang" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan jumlah barang....." type="text" name="totalBarang" size="20" required></td>
               </tr>
               <tr>
                 <td>Select Lokasi Aset</td>
                 <td>
-                <select class="form-control" name="lokasiAset" required>
+                  <select class="form-control" name="lokasiAset" required>
+                    <option value="">--Pilih Lokasi Aset--</option>
                     <?php
                     $lokasi = mysqli_query($connection, "select * from masterlokasi");
                     while ($l = mysqli_fetch_array($lokasi)) {
@@ -41,12 +42,13 @@ require_once '../helper/connection.php';
               <tr>
                 <td>Tipe dan Jenis Aset</td>
                 <td>
-                <select class="form-control" name="tipeAset" required>
+                  <select class="form-control" name="tipeAset" required>
+                    <option value="">--Pilih Tipe dan Jenis Aset--</option>
                     <?php
                     $tipe = mysqli_query($connection, "select * from mastertipeaset");
                     while ($t = mysqli_fetch_array($tipe)) {
                       $combinedValue = $t['namaTipeAset'] . ' (' . $t['jenisAset'] . ')';
-                    ?> 
+                    ?>
                       <option value="<?php echo $combinedValue ?>"><?php echo $combinedValue ?></option>
                     <?php } ?>
                   </select>
@@ -59,11 +61,11 @@ require_once '../helper/connection.php';
               </tr>
               <tr>
                 <td>Supplier</td>
-                <td><input class="form-control" type="text" name="supplier" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan nama supplier....." type="text" name="supplier" size="20" required></td>
               </tr>
               <tr>
                 <td>Harga</td>
-                <td><input class="form-control" type="text" name="harga" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan harga barang....." type="text" name="harga" size="20" required></td>
               </tr>
               <tr>
                 <td>Tanggal Pembelian</td>
@@ -71,11 +73,11 @@ require_once '../helper/connection.php';
               </tr>
               <tr>
                 <td>Garansi</td>
-                <td><input class="form-control" type="text" name="garansi" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan garansi aset....." type="text" name="garansi" size="20" required></td>
               </tr>
               <tr>
                 <td>Deskripsi</td>
-                <td><input class="form-control" type="text" name="deskripsi" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan deskripsi aset....." type="text" name="deskripsi" size="20" required></td>
               </tr>
 
             </table>

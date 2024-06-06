@@ -18,12 +18,13 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td style="width: 15%;">Nama Tipe Aset</td>
-                <td><input class="form-control" type="text" name="namaTipeAset" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan nama tipe aset....." type="text" name="namaTipeAset" size="20" required></td>
               </tr>
               <tr>
                 <td>Select Jenis Aset</td>
                 <td>
                   <select class="form-control" name="jenisAset" required>
+                  <option value="">--Pilih Jenis Aset--</option>
                     <?php
                     $jenis = mysqli_query($connection, "select * from masterjenisaset");
                     while ($j = mysqli_fetch_array($jenis)) {

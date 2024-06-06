@@ -18,23 +18,23 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td style="width: 15%;">Nama</td>
-                <td><input class="form-control" type="text" name="name" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan nama....." type="text" name="name" size="20" required></td>
               </tr>
 
               <tr>
                 <td>Email</td>
-                <td><input class="form-control" type="email" name="email" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan Email....." type="email" name="email" size="20" required></td>
               </tr>
 
               <tr>
                 <td>Username</td>
-                <td><input class="form-control" type="text" name="username" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan Username....." type="text" name="username" size="20" required></td>
               </tr>
 
               <tr>
                 <td>Password</td>
                 <td>
-                  <input id="password" class="form-control" type="password" name="password" size="20" required>
+                  <input id="password" placeholder="Masukkan Password....." class="form-control" type="password" name="password" size="20" required>
                   <input type="checkbox" onclick="showHidePassword()">Show Password
                 </td>
               </tr>

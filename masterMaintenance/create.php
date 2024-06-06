@@ -20,6 +20,7 @@ require_once '../helper/connection.php';
                 <td style="width: 15%;">Nama Aset</td>
                 <td>
                   <select class="form-control" name="namaAset" required>
+                  <option value="">--Pilih Nama Aset Aset--</option>
                     <?php
                     include('../helper/connection.php');
                     $jenis = mysqli_query($connection, "select * from dataaset");
@@ -33,7 +34,7 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td>Biaya Maintenance</td>
-                <td><input class="form-control" type="text" name="biayaMt" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan biaya maintenance....." type="text" name="biayaMt" size="20" required></td>
               </tr>
 
               <tr>
@@ -48,7 +49,7 @@ require_once '../helper/connection.php';
 
               <tr>
                 <td>Keterangan</td>
-                <td><input class="form-control" type="text" name="keterangan" size="20" required></td>
+                <td><input class="form-control" placeholder="Masukkan keterangan....." type="text" name="keterangan" size="20" required></td>
               </tr>
 
               <tr>
