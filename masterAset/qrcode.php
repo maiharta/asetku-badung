@@ -89,14 +89,18 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                     </td>
                                     <td><a href="./qrpdf.php" class="btn btn-light">Download PDF</a></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <a href="./index.php" class="btn btn-danger ml-1">Kembali</a>
-                                    <td>
-                                </tr>
+
                             </table>
                         <?php } ?>
                     </form>
+                    <tr>
+                        <td>
+                            <form action="delete_image.php" method="post" style="display: inline;">
+                                <input type="hidden" name="file_path" value="<?php echo $file_direction; ?>">
+                                <button type="submit" class="btn btn-danger ml-1">Kembali</button>
+                            </form>
+                        </td>
+                    </tr>
                 </div>
             </div>
         </div>

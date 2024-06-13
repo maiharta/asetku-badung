@@ -1,8 +1,14 @@
 <?php
 
-$host="localhost";
-$user="root";
-$password="";
-$db="asetku";
+$connection = new mysqli('localhost', 'root', '', 'asetku');
+	
+	if(!$connection){
+		die("Error: Can't connect to database");
+	}
 
-$connection = mysqli_connect($host, $user, $password, $db);
+// $host="localhost";
+// $user="root";
+// $password="";
+// $db="asetku";
+
+// $connection = mysqli_connect($host, $user, $password, $db);

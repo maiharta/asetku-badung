@@ -19,16 +19,9 @@ require_once '../helper/connection.php';
               <tr>
                 <td style="width: 15%;">Nama Aset</td>
                 <td>
-                  <select class="form-control" name="namaAset" required>
-                  <option value="">--Pilih Nama Aset Aset--</option>
-                    <?php
-                    include('../helper/connection.php');
-                    $jenis = mysqli_query($connection, "select * from dataaset");
-                    while ($j = mysqli_fetch_array($jenis)) {
-                    ?>
-                      <option value="<?php echo $j['namaAset'] ?>"><?php echo $j['namaAset'] ?></option>
-                    <?php } ?>
-                  </select>
+                  <input class="form-control" placeholder="Masukkan nama aset....." id="search" type="text" name="namaAset" size="20" required autocomplete="off">
+                  <div id="suggestion-box"></div>
+
                 </td>
               </tr>
 
