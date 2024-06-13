@@ -1,6 +1,12 @@
 <?php
 require_once '../layout/_top.php';
 require_once '../helper/connection.php';
+require_once '../vendor/autoload.php';
+
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
 
 $id_aset = $_GET['id_aset'];
 $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_aset'");
@@ -80,12 +86,29 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                 <tr>
                                     <td>
                                         <?php
-                                        $gambar = $row['gambar'];
-                                        echo '<img src="data:image/png;base64,' . base64_encode($gambar) . '" />';
 
+                                        $qrquery = "Nama Aset : {$row['namaAset']}
+Total Aset : {$row['totalBarang']}
+Lokasi Aset : {$row['lokasiAset']}
+Tipe dan Jenis Aset : {$row['tipeAset']} {$row['samsat']}
+Supplier : {$row['supplier']}
+Harga : {$row['harga']}
+Tanggal Pembelian : {$row['tanggalPembelian']}
+Garansi : {$row['garansi']}
+Deskripsi : {$row['deskripsi']}";
+
+                                        $renderer = new ImageRenderer(
+                                            new RendererStyle(200),
+                                            new ImagickImageBackEnd()
+                                        );
+                                        $writer = new Writer($renderer);
                                         $file_direction = 'storage/qrcode.png';
-                                        file_put_contents($file_direction, $gambar);
+                                        $writer->writeFile($qrquery, $file_direction);
+
+                                        $qrCode = $writer->writeString($qrquery);
+
                                         ?>
+                                        <img src="./storage/qrcode.png" alt="qrcode">
                                     </td>
                                     <td><a href="./qrpdf.php" class="btn btn-light">Download PDF</a></td>
                                 </tr>
