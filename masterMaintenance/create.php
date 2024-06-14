@@ -19,9 +19,8 @@ require_once '../helper/connection.php';
               <tr>
                 <td style="width: 15%;">Nama Aset</td>
                 <td>
-                  <input class="form-control" placeholder="Masukkan nama aset....." id="search" type="text" name="namaAset" size="20" required autocomplete="off">
-                  <div id="suggestion-box"></div>
-
+                  <input class="form-control" placeholder="Masukkan nama aset....." id="search" type="text" name="namaAset" size="20" required>
+                  <div id="suggestion-box" style="position: absolute; background-color: #fff; overflow-y: auto; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1000;"></div>
                 </td>
               </tr>
 

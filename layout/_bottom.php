@@ -11,7 +11,7 @@
 </div>
 
 <!-- General JS Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 <!-- <script type="text/javascript">
@@ -35,6 +35,42 @@
             query: query
           },
           success: function(data) {
+            // Parse the JSON data
+            var suggestions = JSON.parse(data);
+            // Display the suggestions in the suggestion-box div
+            var suggestionBox = $('#suggestion-box');
+            suggestionBox.html('');
+            suggestions.forEach(function(item) {
+              suggestionBox.append('<div class="suggestion">' + item + '</div>');
+            });
+          }
+        });
+      } else {
+        // Clear the suggestion-box div
+        $('#suggestion-box').html('');
+      }
+    });
+
+    // Event listener for suggestion click
+    $(document).on('click', '.suggestion', function() {
+      var value = $(this).text();
+      $('#search').val(value);
+      $('#suggestion-box').html('');
+    });
+  });
+</script>
+
+
+<!-- <script>
+  $(document).ready(function() {
+    $("#search").keyup(function() {
+      var query = $(this).val();
+      if (query != "") {
+        $.ajax({
+          url: 'search.php',
+          method: 'POST',
+          data: { query: query },
+          success: function(data) {
             // Display the returned data in the suggestion-box div
             $('#suggestion-box').html(data);
           }
@@ -52,7 +88,7 @@
       $('#suggestion-box').html('');
     });
   });
-</script>
+</script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

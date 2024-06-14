@@ -15,7 +15,6 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
 <section class="section">
     <div class="section-header d-flex justify-content-between">
         <h1>Data Aset dan QR Code</h1>
-        <a href="./index.php" class="btn btn-light">Kembali</a>
     </div>
     <div class="row">
         <div class="col-12">
@@ -106,7 +105,6 @@ Deskripsi : {$row['deskripsi']}";
                                         $writer->writeFile($qrquery, $file_direction);
 
                                         $qrCode = $writer->writeString($qrquery);
-
                                         ?>
                                         <img src="./storage/qrcode.png" alt="qrcode">
                                     </td>
@@ -120,7 +118,7 @@ Deskripsi : {$row['deskripsi']}";
                         <td>
                             <form action="delete_image.php" method="post" style="display: inline;">
                                 <input type="hidden" name="file_path" value="<?php echo $file_direction; ?>">
-                                <button type="submit" class="btn btn-danger ml-1">Kembali</button>
+                                <button type="submit" class="btn btn-danger">Kembali</button>
                             </form>
                         </td>
                     </tr>
