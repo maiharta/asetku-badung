@@ -87,8 +87,17 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                         <?php
                                         $gambar = $row['gambar'];
                                         $file_direction = 'storage/qrcode.png';
-                                        file_put_contents($file_direction, $gambar);
-                                        echo '<img src="data:image/png;base64,' . base64_encode($gambar) . '" />';
+
+                                        if (!is_dir('storage')) {
+                                            mkdir('storage', 0777, true);
+                                        }
+
+                                        $result = file_put_contents($file_direction, $gambar);
+                                        if ($result === false) {
+                                            echo "Failed to write image to storage.";
+                                        } else {
+                                            echo '<img src="data:image/png;base64,' . base64_encode($gambar) . '" />';
+                                        }
                                         ?>
                                     </td>
                                     <td><a href="./qrpdf.php" class="btn btn-light">Download PDF</a></td>
