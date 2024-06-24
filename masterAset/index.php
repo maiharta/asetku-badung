@@ -52,11 +52,11 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                     <td><?= $data['garansi'] ?></td>
                     <td><?= $data['deskripsi'] ?></td>
                     <td>
-                      <a class="btn btn-sm btn-info" href="qrcode.php?id_aset=<?= $data['id_aset'] ?>">
-                        Lihat Qr</i>
+                      <a class="btn btn-sm btn-primary" href="qrcode.php?id_aset=<?= $data['id_aset'] ?>">
+                        Lihat Qr
                       </a>
-                      <a class="btn btn-sm btn-info" href="qrpdf.php?id_aset=<?= $data['id_aset'] ?>">
-                        Download Qr</i>
+                      <a class="btn btn-sm btn-success" href="qrpdf.php?id_aset=<?= $data['id_aset'] ?>">
+                      <i class="fas fa-save fa-fw"></i>
                       </a>
                     </td>
                     <td>

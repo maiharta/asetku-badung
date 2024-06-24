@@ -77,9 +77,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                     <td>QR Code</td>
                                 </tr>
                                 <tr>
-
                                     <td><img src="<?= $row['gambar'] ?>" alt="qrcode" /></td>
-                                    <td><a href="./qrpdf.php" class="btn btn-light">Download PDF</a></td>
                                 </tr>
 
                                 <tr>
