@@ -35,20 +35,20 @@ $renderer = new ImageRenderer(
     new ImagickImageBackEnd()
 );
 $writer = new Writer($renderer);
-$file_direction = 'QrCode.png';
+$file_direction = "storage/qrcode_$namaAset-$tanggalPembelian.png";
 $writer->writeFile($qrquery, $file_direction);
 
 $qrCode = $writer->writeString($qrquery);
 
 // Read the image file
-$gambar = file_get_contents($file_direction);
+//$gambar = file_get_contents($file_direction);
 
 // Prepare the image data for insertion into the database
-$gambar = mysqli_real_escape_string($connection, $gambar);
+//$gambar = mysqli_real_escape_string($connection, $gambar);
 
 
 try {
-    $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$gambar')");
+    $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$file_direction')");
     if ($query) {
         $_SESSION['info'] = [
             'status' => 'success',

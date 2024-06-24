@@ -55,6 +55,9 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                       <a class="btn btn-sm btn-info" href="qrcode.php?id_aset=<?= $data['id_aset'] ?>">
                         Lihat Qr</i>
                       </a>
+                      <a class="btn btn-sm btn-info" href="qrpdf.php?id_aset=<?= $data['id_aset'] ?>">
+                        Download Qr</i>
+                      </a>
                     </td>
                     <td>
                       <a class="btn btn-sm btn-danger mb-md-0 mb-1" href="delete.php?id_aset=<?= $data['id_aset'] ?>" onclick="return confirm('Anda yakin ingin menghapus data ini?');">

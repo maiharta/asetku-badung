@@ -1,12 +1,6 @@
 <?php
 require_once '../layout/_top.php';
 require_once '../helper/connection.php';
-require_once '../vendor/autoload.php';
-
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use BaconQrCode\Writer;
 
 $id_aset = $_GET['id_aset'];
 $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_aset'");
@@ -83,36 +77,22 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                     <td>QR Code</td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <?php
-                                        $gambar = $row['gambar'];
-                                        $file_direction = 'storage/qrcode.png';
 
-                                        if (!is_dir('storage')) {
-                                            mkdir('storage', 0777, true);
-                                        }
-
-                                        $result = file_put_contents($file_direction, $gambar);
-                                        if ($result === false) {
-                                            echo "Failed to write image to storage.";
-                                        } else {
-                                            echo '<img src="data:image/png;base64,' . base64_encode($gambar) . '" />';
-                                        }
-                                        ?>
-                                    </td>
+                                    <td><img src="<?= $row['gambar'] ?>" alt="qrcode" /></td>
                                     <td><a href="./qrpdf.php" class="btn btn-light">Download PDF</a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <a href="./index.php" class="btn btn-danger">Kembali</a>
+                                    </td>
                                 </tr>
 
                             </table>
                         <?php } ?>
                     </form>
                     <tr>
-                        <td>
-                            <form action="delete_image.php" method="post" style="display: inline;">
-                                <input type="hidden" name="file_path" value="<?php echo $file_direction; ?>">
-                                <button type="submit" class="btn btn-danger">Kembali</button>
-                            </form>
-                        </td>
+
                     </tr>
                 </div>
             </div>
