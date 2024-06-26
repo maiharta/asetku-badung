@@ -35,7 +35,8 @@ $renderer = new ImageRenderer(
     new ImagickImageBackEnd()
 );
 $writer = new Writer($renderer);
-$file_direction = "storage/qrcode_$namaAset-$tanggalPembelian.png";
+$randomNumber = time();
+$file_direction = "storage/qrcode_$namaAset-{$randomNumber}.png";
 $writer->writeFile($qrquery, $file_direction);
 
 $qrCode = $writer->writeString($qrquery);
