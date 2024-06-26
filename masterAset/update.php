@@ -35,19 +35,20 @@ $renderer = new ImageRenderer(
     new ImagickImageBackEnd()
 );
 $writer = new Writer($renderer);
-$file_direction = 'QrCode.png';
+$randomNumber = time();
+$file_direction = "storage/qrcode_edit_$namaAset-{$randomNumber}.png";
 $writer->writeFile($qrquery, $file_direction);
 
 $qrCode = $writer->writeString($qrquery);
 
 // Read the image file
-$gambar = file_get_contents($file_direction);
+//$gambar = file_get_contents($file_direction);
 
 // Prepare the image data for insertion into the database
-$gambar = mysqli_real_escape_string($connection, $gambar);
+//$gambar = mysqli_real_escape_string($connection, $gambar);
 
 try {
-  $query = mysqli_query($connection, "UPDATE dataaset SET namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$gambar'  WHERE id_aset = '$id_aset'");
+  $query = mysqli_query($connection, "UPDATE dataaset SET namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$file_direction'  WHERE id_aset = '$id_aset'");
   if ($query) {
     $_SESSION['info'] = [
       'status' => 'success',
