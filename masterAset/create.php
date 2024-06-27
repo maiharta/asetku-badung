@@ -17,10 +17,10 @@ require_once '../helper/connection.php';
             <table cellpadding="8" class="w-100">
 
             <tr>
-                <td>Opsi Aset</td>
+                <td>Status Usul Aset</td>
                 <td>
                   <select class="form-control" name="opsiAset" id="opsiAset" required>
-                    <option value="">--Pilih Opsi Aset--</option>
+                    <option value="">--Pilih Usul Aset--</option>
                     <option value="Perbaikan">Hibah</option>
                     <option value="Selesai">Pembelian</option>
                   </select>

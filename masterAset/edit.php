@@ -23,7 +23,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
               <input type="hidden" name="id_aset" value="<?= $row['id_aset'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
-                  <td>Opsi Aset</td>
+                  <td>Status Usul Aset</td>
                   <td>
                     <select class="form-control" name="opsiAset" id="opsiAset" required>
                       <option value="Hibah" <?php if ($row['opsiAset'] == "Hibah") {

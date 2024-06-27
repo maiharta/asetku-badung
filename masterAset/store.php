@@ -22,7 +22,7 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
-$qrquery = "Opsi Aset : $opsiAset
+$qrquery = "Status Usul Aset : $opsiAset
 Nomer Register : $noRegister
 Kode Barang : $kodeBarang
 Nama Aset : $namaAset

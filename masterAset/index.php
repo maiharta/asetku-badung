@@ -18,7 +18,7 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
             <table class="table table-hover table-striped w-100" id="table-1">
               <thead>
                 <tr>
-                  <th>Opsi Barang</th>
+                  <th>Status Usul Aset</th>
                   <th>Nomer Registrasi</th>
                   <th>Kode Barang</th>
                   <th>Nama Aset</th>
