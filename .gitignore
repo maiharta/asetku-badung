@@ -2,3 +2,4 @@
 /vendor
 composer.lock
 /helper/connection.php
+/masterAset/storage
