@@ -9,6 +9,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
 <section class="section">
     <div class="section-header d-flex justify-content-between">
         <h1>Data Aset dan QR Code</h1>
+        <a href="./index.php" class="btn btn-light">Kembali</a>
     </div>
     <div class="row">
         <div class="col-12">
@@ -26,7 +27,15 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                     <td><input class="form-control" type="text" name="opsiAset" size="20" required value="<?= $row['opsiAset'] ?>" disabled></td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 15%;">Nama Aset</td>
+                                    <td>Nomer Register</td>
+                                    <td><input class="form-control" type="text" name="noRegister" size="20" required value="<?= $row['noRegister'] ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>Kode Barang</td>
+                                    <td><input class="form-control" type="text" name="kodeBarang" size="20" required value="<?= $row['kodeBarang'] ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>Nama Aset</td>
                                     <td><input class="form-control" type="text" name="namaAset" size="20" required value="<?= $row['namaAset'] ?>" disabled></td>
                                 </tr>
                                 <tr>

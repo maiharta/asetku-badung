@@ -51,6 +51,7 @@ require_once '../helper/connection.php';
                     <option value="">--Pilih Status Maintenance--</option>
                     <option value="Perbaikan">Perbaikan</option>
                     <option value="Selesai">Selesai</option>
+                    <option value="RusakBerat">Rusak Berat</option>
                   </select>
                 </td>
               </tr>

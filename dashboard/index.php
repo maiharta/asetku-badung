@@ -8,7 +8,7 @@ $lokasi = mysqli_query($connection, "SELECT COUNT(*) FROM masterlokasi");
 $maintenance = mysqli_query($connection, "SELECT status from datamt");
 
 $total_jenisAset = mysqli_fetch_array($jenisAset)[0];
-$total_dataAset = mysqli_fetch_array($dataAset)[0]; //change to total asset - maintenance asset
+$total_dataAset = mysqli_fetch_array($dataAset)[0];
 $total_lokasi = mysqli_fetch_array($lokasi)[0];
 
 $countPerbaikan = 0;
@@ -16,18 +16,16 @@ $countSelesai = 0;
 
 foreach ($maintenance as $row) {
   if ($row['status'] == "Perbaikan") {
-      $countPerbaikan++;
+    $countPerbaikan++;
   } elseif ($row['status'] == "Selesai") {
-      $countSelesai++;
+    $countSelesai++;
+  } elseif ($row['status'] == "RusakBerat") {
+    $countRusakBerat++;
   }
 }
 
-$total = $countPerbaikan + $countSelesai;
-$different = $total_dataAset - $countPerbaikan;
-
-// echo "Total Perbaikan: $countPerbaikan<br>";
-// echo "Total Selesai: $countSelesai<br>";
-// echo "Total: $total";
+$total_perbaikan = $countPerbaikan + $countRusakBerat;
+$different = $total_dataAset - $total_perbaikan;
 
 ?>
 
@@ -36,6 +34,7 @@ $different = $total_dataAset - $countPerbaikan;
     <h1>Dashboard</h1>
   </div>
   <div class="column">
+
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
@@ -52,9 +51,10 @@ $different = $total_dataAset - $countPerbaikan;
           </div>
         </div>
       </div>
+
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-          <div class="card-icon bg-danger">
+          <div class="card-icon bg-info">
             <i class="far fa-user"></i>
           </div>
           <div class="card-wrap">
@@ -85,6 +85,25 @@ $different = $total_dataAset - $countPerbaikan;
           </div>
         </div>
       </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+          <div class="card-icon bg-danger">
+            <i class="far fa-file"></i>
+          </div>
+          <div class="card-wrap">
+            <div class="card-header">
+              <h4>Aset Rusak Berat</h4>
+            </div>
+            <div class="card-body">
+              <?= $countRusakBerat ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-success">
@@ -100,6 +119,7 @@ $different = $total_dataAset - $countPerbaikan;
           </div>
         </div>
       </div>
+
     </div>
 
 

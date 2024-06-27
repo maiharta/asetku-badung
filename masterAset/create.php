@@ -26,9 +26,16 @@ require_once '../helper/connection.php';
                   </select>
                 </td>
               </tr>
-
               <tr>
-                <td style="width: 15%;">Nama Aset</td>
+                <td style="width: 15%;">Nomer Register</td>
+                <td><input class="form-control" placeholder="Masukkan nomer register....." type="text" name="noRegister" size="20" required></td>
+              </tr>
+              <tr>
+                <td>Kode Barang</td>
+                <td><input class="form-control" placeholder="Masukkan Kode Barang....." type="text" name="kodeBarang" size="20" required></td>
+              </tr>
+              <tr>
+                <td>Nama Aset</td>
                 <td><input class="form-control" placeholder="Masukkan nama aset....." type="text" name="namaAset" size="20" required></td>
               </tr>
               <tr>

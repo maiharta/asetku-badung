@@ -19,6 +19,8 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
               <thead>
                 <tr>
                   <th>Opsi Barang</th>
+                  <th>Nomer Registrasi</th>
+                  <th>Kode Barang</th>
                   <th>Nama Aset</th>
                   <th>Total Barang</th>
                   <th>Lokasi Aset</th>
@@ -39,6 +41,8 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
 
                   <tr>
                     <td><?= $data['opsiAset'] ?></td>
+                    <td><?= $data['noRegister'] ?></td>
+                    <td><?= $data['kodeBarang'] ?></td>
                     <td><?= $data['namaAset'] ?></td>
                     <td><?= $data['totalBarang'] ?></td>
                     <td><?= $data['lokasiAset'] ?></td>

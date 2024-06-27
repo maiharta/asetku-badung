@@ -62,6 +62,9 @@ $query = mysqli_query($connection, "SELECT * FROM datamt WHERE id_mt='$id_mt'");
                       <option value="Selesai" <?php if ($row['status'] == "Selesai") {
                                                 echo "selected";
                                               } ?>>Selesai</option>
+                      <option value="RusakBerat" <?php if ($row['status'] == "RusakBerat") {
+                                                echo "selected";
+                                              } ?>>Rusak Berat</option>
                     </select>
                   </td>
                 </tr>

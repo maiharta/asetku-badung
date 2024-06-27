@@ -36,6 +36,14 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   </td>
                 </tr>
                 <tr>
+                  <td>Nomer Register</td>
+                  <td><input class="form-control" type="text" name="noRegister" size="20" required value="<?= $row['noRegister'] ?>"></td>
+                </tr>
+                <tr>
+                  <td>Kode Barang</td>
+                  <td><input class="form-control" type="text" name="kodeBarang" size="20" required value="<?= $row['kodeBarang'] ?>"></td>
+                </tr>
+                <tr>
                   <td style="width: 15%;">Nama Aset</td>
                   <td><input class="form-control" type="text" name="namaAset" size="20" required value="<?= $row['namaAset'] ?>"></td>
                 </tr>
