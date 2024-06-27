@@ -18,6 +18,7 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
             <table class="table table-hover table-striped w-100" id="table-1">
               <thead>
                 <tr>
+                  <th>Opsi Barang</th>
                   <th>Nama Aset</th>
                   <th>Total Barang</th>
                   <th>Lokasi Aset</th>
@@ -37,6 +38,7 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                 ?>
 
                   <tr>
+                    <td><?= $data['opsiAset'] ?></td>
                     <td><?= $data['namaAset'] ?></td>
                     <td><?= $data['totalBarang'] ?></td>
                     <td><?= $data['lokasiAset'] ?></td>

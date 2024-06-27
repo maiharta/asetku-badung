@@ -8,7 +8,7 @@ use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 
-
+$opsiAset = $_POST['opsiAset'];
 $namaAset = $_POST['namaAset'];
 $totalBarang = $_POST['totalBarang'];
 $lokasiAset = $_POST['lokasiAset'];
@@ -20,7 +20,8 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
-$qrquery = "Nama Aset : $namaAset
+$qrquery = "Opsi Aset : $opsiAset
+Nama Aset : $namaAset
 Total Aset : $totalBarang
 Lokasi Aset : $lokasiAset
 Tipe dan Jenis Aset : $tipeAset $samsat
@@ -49,7 +50,7 @@ $qrCode = $writer->writeString($qrquery);
 
 
 try {
-    $query = mysqli_query($connection, "insert into dataaset(namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$file_direction')");
+    $query = mysqli_query($connection, "insert into dataaset(opsiAset, namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$opsiAset', '$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$file_direction')");
     if ($query) {
         $_SESSION['info'] = [
             'status' => 'success',

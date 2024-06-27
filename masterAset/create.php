@@ -16,6 +16,17 @@ require_once '../helper/connection.php';
           <form action="./store.php" method="POST">
             <table cellpadding="8" class="w-100">
 
+            <tr>
+                <td>Opsi Aset</td>
+                <td>
+                  <select class="form-control" name="opsiAset" id="opsiAset" required>
+                    <option value="">--Pilih Opsi Aset--</option>
+                    <option value="Perbaikan">Hibah</option>
+                    <option value="Selesai">Pembelian</option>
+                  </select>
+                </td>
+              </tr>
+
               <tr>
                 <td style="width: 15%;">Nama Aset</td>
                 <td><input class="form-control" placeholder="Masukkan nama aset....." type="text" name="namaAset" size="20" required></td>

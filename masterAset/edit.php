@@ -23,6 +23,19 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
               <input type="hidden" name="id_aset" value="<?= $row['id_aset'] ?>">
               <table cellpadding="8" class="w-100">
                 <tr>
+                  <td>Opsi Aset</td>
+                  <td>
+                    <select class="form-control" name="opsiAset" id="opsiAset" required>
+                      <option value="Hibah" <?php if ($row['opsiAset'] == "Hibah") {
+                                                  echo "selected";
+                                                } ?>>Hibah</option>
+                      <option value="Pembelian" <?php if ($row['opsiAset'] == "Pembelian") {
+                                                echo "selected";
+                                              } ?>>Pembelian</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
                   <td style="width: 15%;">Nama Aset</td>
                   <td><input class="form-control" type="text" name="namaAset" size="20" required value="<?= $row['namaAset'] ?>"></td>
                 </tr>
@@ -66,8 +79,8 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   echo '<tr name="samsat" style="display:none;">';
                 }
                 ?>
-                  <td>Tanggal Samsat</td>
-                  <td><input class="form-control" type="date" name="samsat" size="20" require value="<?= $row['samsat'] ?>"/></td>
+                <td>Tanggal Samsat</td>
+                <td><input class="form-control" type="date" name="samsat" size="20" require value="<?= $row['samsat'] ?>" /></td>
                 </tr>
                 <tr>
                   <td>Supplier</td>

@@ -22,6 +22,10 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                             <input type="hidden" name="id_aset" value="<?= $row['id_aset'] ?>">
                             <table cellpadding="8" class="w-100">
                                 <tr>
+                                    <td style="width: 15%;">Opsi Aset</td>
+                                    <td><input class="form-control" type="text" name="opsiAset" size="20" required value="<?= $row['opsiAset'] ?>" disabled></td>
+                                </tr>
+                                <tr>
                                     <td style="width: 15%;">Nama Aset</td>
                                     <td><input class="form-control" type="text" name="namaAset" size="20" required value="<?= $row['namaAset'] ?>" disabled></td>
                                 </tr>

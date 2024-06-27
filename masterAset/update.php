@@ -9,6 +9,7 @@ use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 
 $id_aset = $_POST['id_aset'];
+$opsiAset = $_POST['opsiAset'];
 $namaAset = $_POST['namaAset'];
 $totalBarang = $_POST['totalBarang'];
 $lokasiAset = $_POST['lokasiAset'];
@@ -20,7 +21,8 @@ $tanggalPembelian = $_POST['tanggalPembelian'];
 $garansi = $_POST['garansi'];
 $deskripsi = $_POST['deskripsi'];
 
-$qrquery = "Nama Aset : $namaAset
+$qrquery = "Opsi Aset : $opsiAset
+Nama Aset : $namaAset
 Total Aset : $totalBarang
 Lokasi Aset : $lokasiAset
 Tipe dan Jenis Aset : $tipeAset $samsat
@@ -48,7 +50,7 @@ $qrCode = $writer->writeString($qrquery);
 //$gambar = mysqli_real_escape_string($connection, $gambar);
 
 try {
-  $query = mysqli_query($connection, "UPDATE dataaset SET namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$file_direction'  WHERE id_aset = '$id_aset'");
+  $query = mysqli_query($connection, "UPDATE dataaset SET opsiAset = '$opsiAset', namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$file_direction'  WHERE id_aset = '$id_aset'");
   if ($query) {
     $_SESSION['info'] = [
       'status' => 'success',
