@@ -13,7 +13,7 @@ require_once '../helper/connection.php';
       <div class="card">
         <div class="card-body">
           <!-- // Form -->
-          <form action="./store.php" method="POST">
+          <form action="./store.php" method="POST" enctype="multipart/form-data">
             <table cellpadding="8" class="w-100">
 
             <tr>
@@ -21,8 +21,8 @@ require_once '../helper/connection.php';
                 <td>
                   <select class="form-control" name="opsiAset" id="opsiAset" required>
                     <option value="">--Pilih Usul Aset--</option>
-                    <option value="Perbaikan">Hibah</option>
-                    <option value="Selesai">Pembelian</option>
+                    <option value="Hibah">Hibah</option>
+                    <option value="Pembelian">Pembelian</option>
                   </select>
                 </td>
               </tr>
@@ -96,6 +96,10 @@ require_once '../helper/connection.php';
               <tr>
                 <td>Deskripsi</td>
                 <td><input class="form-control" placeholder="Masukkan deskripsi aset....." type="text" name="deskripsi" size="20" required></td>
+              </tr>
+              <tr>
+                <td>Bukti Foto</td>
+                <td><input type="file" name="fotoBukti" accept=".jpg, .jpeg, .png" required></td>
               </tr>
 
             </table>

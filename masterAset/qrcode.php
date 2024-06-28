@@ -91,6 +91,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                 </tr>
                                 <tr>
                                     <td><img src="<?= $row['gambar'] ?>" alt="qrcode" /></td>
+                                    <td><img style="width: 400px; height: auto;" src="<?= $row['fotoBukti'] ?>" alt="foto bukti"/></td>
                                 </tr>
 
                                 <tr>

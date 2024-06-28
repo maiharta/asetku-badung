@@ -16,7 +16,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
       <div class="card">
         <div class="card-body">
           <!-- // Form -->
-          <form action="./update.php" method="post">
+          <form action="./update.php" method="post" enctype="multipart/form-data">
             <?php
             while ($row = mysqli_fetch_array($query)) {
             ?>
@@ -27,11 +27,11 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                   <td>
                     <select class="form-control" name="opsiAset" id="opsiAset" required>
                       <option value="Hibah" <?php if ($row['opsiAset'] == "Hibah") {
-                                                  echo "selected";
-                                                } ?>>Hibah</option>
+                                              echo "selected";
+                                            } ?>>Hibah</option>
                       <option value="Pembelian" <?php if ($row['opsiAset'] == "Pembelian") {
-                                                echo "selected";
-                                              } ?>>Pembelian</option>
+                                                  echo "selected";
+                                                } ?>>Pembelian</option>
                     </select>
                   </td>
                 </tr>
@@ -109,6 +109,14 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                 <tr>
                   <td>Deskripsi</td>
                   <td><input class="form-control" type="text" name="deskripsi" size="20" required value="<?= $row['deskripsi'] ?>"></td>
+                </tr>
+                <tr>
+                  <td>Bukti Foto</td>
+                  <td><img style="width: 400px; height: auto;" src="<?= $row['fotoBukti'] ?>" alt="foto bukti" /></td>
+                </tr>
+                <tr>
+                  <td>Bukti Foto</td>
+                  <td><input type="file" name="fotoBukti" accept=".jpg, .jpeg, .png"></td>
                 </tr>
 
                 <tr>

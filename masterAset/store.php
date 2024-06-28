@@ -43,18 +43,21 @@ $writer = new Writer($renderer);
 $randomNumber = time();
 $file_direction = "storage/qrcode_$namaAset-{$randomNumber}.png";
 $writer->writeFile($qrquery, $file_direction);
-
 $qrCode = $writer->writeString($qrquery);
 
-// Read the image file
-//$gambar = file_get_contents($file_direction);
+$randomNumber = time();
+$tmpFile = $_FILES['fotoBukti']['tmp_name'];
+$originalFilename = $_FILES['fotoBukti']['name'];
+$newFile = 'storage/' . $randomNumber . '_' . $originalFilename;
 
-// Prepare the image data for insertion into the database
-//$gambar = mysqli_real_escape_string($connection, $gambar);
-
+if (move_uploaded_file($tmpFile, $newFile)) {
+    echo "File uploaded successfully.";
+} else {
+    echo "Failed to upload the file.";
+}
 
 try {
-    $query = mysqli_query($connection, "insert into dataaset(opsiAset, noRegister, kodeBarang, namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar) value('$opsiAset', '$noRegister', '$kodeBarang', '$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$file_direction')");
+    $query = mysqli_query($connection, "insert into dataaset(opsiAset, noRegister, kodeBarang, namaAset, totalBarang, lokasiAset, tipeAset, samsat, supplier, harga, tanggalPembelian, garansi, deskripsi, gambar, fotoBukti) value('$opsiAset', '$noRegister', '$kodeBarang', '$namaAset', '$totalBarang', '$lokasiAset', '$tipeAset', '$samsat', '$supplier', '$harga', '$tanggalPembelian', '$garansi', '$deskripsi', '$file_direction', '$newFile')");
     if ($query) {
         $_SESSION['info'] = [
             'status' => 'success',

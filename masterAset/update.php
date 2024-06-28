@@ -37,24 +37,28 @@ Garansi : $garansi
 Deskripsi : $deskripsi";
 
 $renderer = new ImageRenderer(
-    new RendererStyle(200),
-    new ImagickImageBackEnd()
+  new RendererStyle(200),
+  new ImagickImageBackEnd()
 );
 $writer = new Writer($renderer);
 $randomNumber = time();
 $file_direction = "storage/qrcode_edit_$namaAset-{$randomNumber}.png";
 $writer->writeFile($qrquery, $file_direction);
-
 $qrCode = $writer->writeString($qrquery);
 
-// Read the image file
-//$gambar = file_get_contents($file_direction);
+$randomNumber = time();
+$tmpFile = $_FILES['fotoBukti']['tmp_name'];
+$originalFilename = $_FILES['fotoBukti']['name'];
+$newFile = 'storage/' . $randomNumber . '_' . $originalFilename;
 
-// Prepare the image data for insertion into the database
-//$gambar = mysqli_real_escape_string($connection, $gambar);
+if (move_uploaded_file($tmpFile, $newFile)) {
+    echo "File uploaded successfully.";
+} else {
+    echo "Failed to upload the file.";
+}
 
 try {
-  $query = mysqli_query($connection, "UPDATE dataaset SET opsiAset = '$opsiAset', noRegister = '$noRegister', kodeBarang = '$kodeBarang', namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$file_direction'  WHERE id_aset = '$id_aset'");
+  $query = mysqli_query($connection, "UPDATE dataaset SET opsiAset = '$opsiAset', noRegister = '$noRegister', kodeBarang = '$kodeBarang', namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$file_direction', fotoBukti = '$newFile'  WHERE id_aset = '$id_aset'");
   if ($query) {
     $_SESSION['info'] = [
       'status' => 'success',
@@ -63,12 +67,48 @@ try {
   } else {
     throw new Exception(mysqli_error($connection));
   }
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (isset($_FILES['filename']) && $_FILES['filename']['error'] == UPLOAD_ERR_OK) {
+      $fileTmpPath = $_FILES['filename']['tmp_name'];
+      $fileName = $_FILES['filename']['name'];
+      $fileSize = $_FILES['filename']['size'];
+      $fileType = $_FILES['filename']['type'];
+      $fileNameCmps = explode(".", $fileName);
+      $fileExtension = strtolower(end($fileNameCmps));
+
+      $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+
+      $allowedfileExtensions = array('jpg', 'jpeg', 'png');
+      if (in_array($fileExtension, $allowedfileExtensions)) {
+
+        $uploadFileDir = 'storage/';
+        $dest_path = $uploadFileDir . $newFileName;
+
+        if (!is_dir($uploadFileDir)) {
+          mkdir($uploadFileDir, 0755, true);
+        }
+
+        if (move_uploaded_file($fileTmpPath, $dest_path)) {
+          echo 'File is successfully uploaded.';
+        } else {
+          echo 'There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.';
+        }
+      } else {
+        echo 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+      }
+    } else {
+      echo 'There was some error in the file upload. Please check the following error.<br>';
+      echo 'Error:' . $_FILES['filename']['error'];
+    }
+  }
 } catch (Exception $e) {
   error_log($e->getMessage(), 3, 'storage/error.log');
 
   $_SESSION['info'] = [
-      'status' => 'failed',
-      'message' => 'Gagal mengubah data'
+    'status' => 'failed',
+    'message' => 'Gagal mengubah data'
   ];
 }
 header('Location: ./index.php');
