@@ -46,7 +46,6 @@ $file_direction = "storage/qrcode_edit_$namaAset-{$randomNumber}.png";
 $writer->writeFile($qrquery, $file_direction);
 $qrCode = $writer->writeString($qrquery);
 
-$randomNumber = time();
 $tmpFile = $_FILES['fotoBukti']['tmp_name'];
 $originalFilename = $_FILES['fotoBukti']['name'];
 $newFile = 'storage/' . $randomNumber . '_' . $originalFilename;
