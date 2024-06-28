@@ -20,7 +20,7 @@
     const file = inputElement.files[0];
 
     if (file && file.size > maxFileSizeInBytes) {
-        alert("File is too big! Please choose a smaller file.");
+        alert("File gambar lebih besar dari 2mb! upload file gambar dibawah 2mb.");
         inputElement.value = ""; // Clear the input field
     }
 }
