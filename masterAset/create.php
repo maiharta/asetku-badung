@@ -99,7 +99,7 @@ require_once '../helper/connection.php';
               </tr>
               <tr>
                 <td>Bukti Foto</td>
-                <td><input type="file" name="fotoBukti" accept=".jpg, .jpeg, .png" required></td>
+                <td><input type="file" name="fotoBukti" accept=".jpg, .jpeg, .png" required onchange="checkFileSize(this)"></td>
               </tr>
 
             </table>

@@ -15,6 +15,18 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 <script>
+  function checkFileSize(inputElement) {
+    const maxFileSizeInBytes = 2097152; // 2MB (you can adjust this as needed)
+    const file = inputElement.files[0];
+
+    if (file && file.size > maxFileSizeInBytes) {
+        alert("File is too big! Please choose a smaller file.");
+        inputElement.value = ""; // Clear the input field
+    }
+}
+</script>
+
+<script>
   $(document).ready(function() {
     $("#search").keyup(function() {
       var query = $(this).val();

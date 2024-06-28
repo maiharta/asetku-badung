@@ -116,7 +116,7 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                 </tr>
                 <tr>
                   <td>Bukti Foto</td>
-                  <td><input type="file" name="fotoBukti" accept=".jpg, .jpeg, .png"></td>
+                  <td><input type="file" name="fotoBukti" accept=".jpg, .jpeg, .png" onchange="checkFileSize(this)"></td>
                 </tr>
 
                 <tr>
