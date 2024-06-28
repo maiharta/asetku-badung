@@ -16,7 +16,7 @@ require_once '../helper/connection.php';
           <form action="./store.php" method="POST" enctype="multipart/form-data">
             <table cellpadding="8" class="w-100">
 
-            <tr>
+              <tr>
                 <td>Status Usul Aset</td>
                 <td>
                   <select class="form-control" name="opsiAset" id="opsiAset" required>

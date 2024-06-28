@@ -28,11 +28,11 @@ $query = mysqli_query($connection, "SELECT * FROM dataaset WHERE id_aset='$id_as
                                 </tr>
                                 <tr>
                                     <td>Nomer Register</td>
-                                    <td><input class="form-control" type="text" name="noRegister" size="20" required value="<?= $row['noRegister'] ?>"></td>
+                                    <td><input class="form-control" type="text" name="noRegister" size="20" required value="<?= $row['noRegister'] ?>" disabled></td>
                                 </tr>
                                 <tr>
                                     <td>Kode Barang</td>
-                                    <td><input class="form-control" type="text" name="kodeBarang" size="20" required value="<?= $row['kodeBarang'] ?>"></td>
+                                    <td><input class="form-control" type="text" name="kodeBarang" size="20" required value="<?= $row['kodeBarang'] ?>" disabled></td>
                                 </tr>
                                 <tr>
                                     <td>Nama Aset</td>

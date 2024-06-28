@@ -14,15 +14,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-<!-- <script type="text/javascript">
-	$(document).ready(function() {
-		$("#search").autocomplete({
-			source: 'search.php',
-			minLength: 1,
-		});
-	});
-</script> -->
-
 <script>
   $(document).ready(function() {
     $("#search").keyup(function() {
@@ -35,9 +26,7 @@
             query: query
           },
           success: function(data) {
-            // Parse the JSON data
             var suggestions = JSON.parse(data);
-            // Display the suggestions in the suggestion-box div
             var suggestionBox = $('#suggestion-box');
             suggestionBox.html('');
             suggestions.forEach(function(item) {
@@ -46,12 +35,10 @@
           }
         });
       } else {
-        // Clear the suggestion-box div
         $('#suggestion-box').html('');
       }
     });
 
-    // Event listener for suggestion click
     $(document).on('click', '.suggestion', function() {
       var value = $(this).text();
       $('#search').val(value);
@@ -59,36 +46,6 @@
     });
   });
 </script>
-
-
-<!-- <script>
-  $(document).ready(function() {
-    $("#search").keyup(function() {
-      var query = $(this).val();
-      if (query != "") {
-        $.ajax({
-          url: 'search.php',
-          method: 'POST',
-          data: { query: query },
-          success: function(data) {
-            // Display the returned data in the suggestion-box div
-            $('#suggestion-box').html(data);
-          }
-        });
-      } else {
-        // Clear the suggestion-box div
-        $('#suggestion-box').html('');
-      }
-    });
-
-    // Event listener for suggestion click
-    $(document).on('click', '.suggestion', function() {
-      var value = $(this).text();
-      $('#search').val(value);
-      $('#suggestion-box').html('');
-    });
-  });
-</script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
