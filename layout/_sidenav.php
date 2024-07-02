@@ -31,8 +31,12 @@
       <li class="menu">
         <a href="../masterMaintenance/index.php"><i class="fas fa-columns"></i> <span>Master Maintenacne</span></a>
       </li>
-      <li class="menu">
-        <a href="../.../index.php"><i class="fas fa-columns"></i> <span>Master laporan</span></a>
+      <li class="dropdown">
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master Laporan</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="../masterLaporan/laporanAset.php">Data Aset</a></li>
+          <li><a class="nav-link" href="../masterLaporan/laporanMaintenance.php">Data Maintenance</a></li>
+        </ul>
       </li>
     </ul>
   </aside>

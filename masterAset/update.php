@@ -46,15 +46,34 @@ $file_direction = "storage/qrcode_edit_$namaAset-{$randomNumber}.png";
 $writer->writeFile($qrquery, $file_direction);
 $qrCode = $writer->writeString($qrquery);
 
-$tmpFile = $_FILES['fotoBukti']['tmp_name'];
-$originalFilename = $_FILES['fotoBukti']['name'];
-$newFile = 'storage/' . $randomNumber . '_' . $originalFilename;
+// Fetch existing fotoBukti from the database
+$query = mysqli_query($connection, "SELECT fotoBukti FROM dataaset WHERE id_aset = '$id_aset'");
+$result = mysqli_fetch_assoc($query);
+$existingFile = $result['fotoBukti'];
 
-if (move_uploaded_file($tmpFile, $newFile)) {
-    echo "File uploaded successfully.";
+// Check if a new file is uploaded
+if (!empty($_FILES['fotoBukti']['tmp_name'])) {
+    $tmpFile = $_FILES['fotoBukti']['tmp_name'];
+    $originalFilename = $_FILES['fotoBukti']['name'];
+    $newFile = 'storage/' . $randomNumber . '_' . $originalFilename;
+
+    // Move the uploaded file to the desired location
+    move_uploaded_file($tmpFile, $newFile);
 } else {
-    echo "Failed to upload the file.";
+    // Use the existing file if no new file is uploaded
+    $newFile = $existingFile;
 }
+
+// Update the database with the new file path or existing file path
+$query = mysqli_query($connection, "UPDATE dataaset SET fotoBukti = '$newFile' WHERE id_aset = '$id_aset'");
+
+// Check if the query was successful
+if ($query) {
+    echo "Record updated successfully.";
+} else {
+    echo "Error updating record: " . mysqli_error($connection);
+}
+
 
 try {
   $query = mysqli_query($connection, "UPDATE dataaset SET opsiAset = '$opsiAset', noRegister = '$noRegister', kodeBarang = '$kodeBarang', namaAset = '$namaAset', totalBarang = '$totalBarang', lokasiAset = '$lokasiAset', tipeAset = '$tipeAset', samsat = '$samsat', supplier = '$supplier', harga = '$harga', tanggalPembelian = '$tanggalPembelian', garansi = '$garansi', deskripsi = '$deskripsi', gambar = '$file_direction', fotoBukti = '$newFile'  WHERE id_aset = '$id_aset'");
@@ -65,42 +84,6 @@ try {
     ];
   } else {
     throw new Exception(mysqli_error($connection));
-  }
-
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if (isset($_FILES['filename']) && $_FILES['filename']['error'] == UPLOAD_ERR_OK) {
-      $fileTmpPath = $_FILES['filename']['tmp_name'];
-      $fileName = $_FILES['filename']['name'];
-      $fileSize = $_FILES['filename']['size'];
-      $fileType = $_FILES['filename']['type'];
-      $fileNameCmps = explode(".", $fileName);
-      $fileExtension = strtolower(end($fileNameCmps));
-
-      $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-
-      $allowedfileExtensions = array('jpg', 'jpeg', 'png');
-      if (in_array($fileExtension, $allowedfileExtensions)) {
-
-        $uploadFileDir = 'storage/';
-        $dest_path = $uploadFileDir . $newFileName;
-
-        if (!is_dir($uploadFileDir)) {
-          mkdir($uploadFileDir, 0755, true);
-        }
-
-        if (move_uploaded_file($fileTmpPath, $dest_path)) {
-          echo 'File is successfully uploaded.';
-        } else {
-          echo 'There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.';
-        }
-      } else {
-        echo 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
-      }
-    } else {
-      echo 'There was some error in the file upload. Please check the following error.<br>';
-      echo 'Error:' . $_FILES['filename']['error'];
-    }
   }
 } catch (Exception $e) {
   error_log($e->getMessage(), 3, 'storage/error.log');

@@ -1,7 +1,7 @@
 </div>
 <footer class="main-footer">
   <div class="footer-left">
-    Copyright &copy; Maiharta 2024</a>
+    Copyright &copy; Maiharta 2024
   </div>
   <div class="footer-right">
 
@@ -16,12 +16,12 @@
 
 <script>
   function checkFileSize(inputElement) {
-    const maxFileSizeInBytes = 2097152; // 2MB (you can adjust this as needed)
+    const maxFileSizeInBytes = 2097152; // 2MB
     const file = inputElement.files[0];
 
     if (file && file.size > maxFileSizeInBytes) {
-        alert("File is too big! Please choose a smaller file.");
-        inputElement.value = ""; // Clear the input field
+        alert("File gambar melebihi 2mb! upload file gambar dibawah 2mb.");
+        inputElement.value = "";
     }
 }
 </script>
