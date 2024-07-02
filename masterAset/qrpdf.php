@@ -19,7 +19,7 @@ if ($query && mysqli_num_rows($query) > 0) {
 
     // Add the logo image
     $logoImagePath = '../assets/img/PemKab_Badung.png';
-    $pdf->Image($logoImagePath, 75, 20, 50, 0, 'PNG', '', '', true, 150, '', false, false, 1, false, false, false);
+    $pdf->Image($logoImagePath, 75, 20, 50, 0, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
     // Add the QR code image
     $pdf->Image($qrCodeImage, 75, 60, 50, 50, 'PNG', '', '', true, 150, '', false, false, 1, false, false, false);
 
@@ -27,6 +27,9 @@ if ($query && mysqli_num_rows($query) > 0) {
     $pdf->SetFont('helvetica', '', 12);
     $pdf->SetXY(0, 110); // Adjust the position as needed
     $pdf->Cell(0, 10, $row['namaAset'], 0, 1, 'C');
+
+    // Set the line width to 2px
+    $pdf->SetLineWidth(2);
 
     // Draw a 5px border around the entire content
     $pdf->Rect(70, 15, 60, 120, 'D'); // Adjust the coordinates and dimensions as needed
