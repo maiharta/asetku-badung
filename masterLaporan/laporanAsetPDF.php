@@ -2,7 +2,7 @@
 require_once('../vendor/tecnickcom/tcpdf/tcpdf.php');
 require_once '../helper/connection.php';
 
-$result = mysqli_query($connection, "SELECT * FROM dataaset");
+$tipeAset = isset($_POST['tipeAset']) ? $_POST['tipeAset'] : null;
 
 // Create new PDF document
 $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -69,7 +69,17 @@ $html .= '<table border="1" cellpadding="4">
 </thead>
 <tbody>';
 
-// Assuming $result contains the data from the database query
+$query = "SELECT * FROM `dataaset`";
+if ($tipeAset) {
+    if ($tipeAset == 'Komputer') {
+        $query .= " WHERE `tipeAset` LIKE 'komputer (elektronik)'";
+    } else if ($tipeAset == 'Kendaraan') {
+        $query .= " WHERE `tipeAset` LIKE '%(kendaraan)'";
+    }
+}
+
+$result = mysqli_query($connection, $query) or die(mysqli_error($connection));
+
 while ($data = mysqli_fetch_array($result)) {
     $originalDate = $data['tanggalPembelian'];
     $Pembelian = date("d-m-Y", strtotime($originalDate));

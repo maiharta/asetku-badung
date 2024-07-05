@@ -2,13 +2,12 @@
 require_once '../layout/_top.php';
 require_once '../helper/connection.php';
 
-$result = mysqli_query($connection, "SELECT * FROM dataaset");
+// $result = mysqli_query($connection, "SELECT * FROM dataaset");
 ?>
 
 <section class="section">
     <div class="section-header d-flex justify-content-between">
         <h1>Laporan Daftar Aset</h1>
-        <a href="./laporanAsetPDF.php" class="btn btn-success">Download Laporan Aset</a>
     </div>
     <div class="row">
         <div class="col-12">
@@ -27,6 +26,36 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                                 <p style="font-weight: bold;">U P B : <span style="font-weight: lighter;">Kecamatan Kuta Utara</span></p>
                                 <p style="font-weight: bold;">No. Kode Lokasi : <span style="font-weight: lighter;">12.14.01.02.05.01.01</span></p>
                             </div>
+
+                            <?php
+                            $tipeAset = isset($_POST['tipeAset']) ? $_POST['tipeAset'] : '';
+
+                            if (isset($_POST['reset'])) {   
+                                $tipeAset = 'noFilter';
+                            }
+                            ?>
+
+                            <form method="POST" action="">
+                                <div class="form-inline">
+                                    <label>Tipe dan Jenis Aset : </label>
+                                    <select class="form-control" name="tipeAset">
+                                        <option value="noFilter" <?php echo ($tipeAset == 'noFilter') ? 'selected' : ''; ?>>Tanpa Filter</option>
+                                        <option value="Komputer" <?php echo ($tipeAset == 'Komputer') ? 'selected' : ''; ?>>Komputer</option>
+                                        <option value="Kendaraan" <?php echo ($tipeAset == 'Kendaraan') ? 'selected' : ''; ?>>Kendaraan</option>
+                                    </select>
+                                    <div style="padding-left: 5px;">
+                                        <button class="btn btn-primary" name="filter">Filter</button>
+                                    </div>
+                                    <div style="padding-left: 5px;">
+                                        <button class="btn btn-danger" name="reset" type="submit">Reset</button>
+                                    </div>
+                                    <div style="padding-left: 5px;">
+                                        <button class="btn btn-success" name="generate_pdf" formaction="laporanAsetPDF.php">Download Laporan</button>
+                                    </div>
+                                </div>
+                                <br />
+                            </form>
+
                             <thead>
                                 <tr>
                                     <th>Status Usul Aset</th>
@@ -44,33 +73,7 @@ $result = mysqli_query($connection, "SELECT * FROM dataaset");
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                while ($data = mysqli_fetch_array($result)) :
-                                ?>
-
-                                    <tr>
-                                        <td><?= $data['opsiAset'] ?></td>
-                                        <td><?= $data['noRegister'] ?></td>
-                                        <td><?= $data['kodeBarang'] ?></td>
-                                        <td><?= $data['namaAset'] ?></td>
-                                        <td><?= $data['totalBarang'] ?></td>
-                                        <td><?= $data['lokasiAset'] ?></td>
-                                        <td><?= $data['tipeAset'] ?></td>
-                                        <td><?= $data['supplier'] ?></td>
-                                        <td><?= $data['harga'] ?></td>
-                                        <?php
-                                        $originalDate = $data['tanggalPembelian'];
-
-                                        $Pembelian = date("d-m-Y", strtotime($originalDate));
-                                        ?>
-                                        <td><?= $Pembelian ?></td>
-                                        <td><?= $data['garansi'] ?></td>
-                                        <td><?= $data['deskripsi'] ?></td>
-                                    </tr>
-
-                                <?php
-                                endwhile;
-                                ?>
+                                <?php include 'filterLaporanAset.php' ?>
                             </tbody>
                         </table>
                     </div>

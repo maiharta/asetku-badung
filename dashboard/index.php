@@ -3,11 +3,9 @@ require_once '../layout/_top.php';
 require_once '../helper/connection.php';
 
 $dataAset = mysqli_query($connection, "SELECT COUNT(*) FROM dataaset");
-$jenisAset = mysqli_query($connection, "SELECT COUNT(*) FROM masterjenisaset");
 $lokasi = mysqli_query($connection, "SELECT COUNT(*) FROM masterlokasi");
 $maintenance = mysqli_query($connection, "SELECT status from datamt");
 
-$total_jenisAset = mysqli_fetch_array($jenisAset)[0];
 $total_dataAset = mysqli_fetch_array($dataAset)[0];
 $total_lokasi = mysqli_fetch_array($lokasi)[0];
 
@@ -17,10 +15,10 @@ $countSelesai = 0;
 foreach ($maintenance as $row) {
   if ($row['status'] == "Perbaikan") {
     $countPerbaikan++;
-  } elseif ($row['status'] == "Selesai") {
-    $countSelesai++;
   } elseif ($row['status'] == "RusakBerat") {
     $countRusakBerat++;
+  } else { 
+    $countSelesai++;
   }
 }
 

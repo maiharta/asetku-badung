@@ -29,7 +29,7 @@
         <a href="../masterAset/index.php"><i class="fas fa-columns"></i> <span>Master Aset</span></a>
       </li>
       <li class="menu">
-        <a href="../masterMaintenance/index.php"><i class="fas fa-columns"></i> <span>Master Maintenacne</span></a>
+        <a href="../masterMaintenance/index.php"><i class="fas fa-columns"></i> <span>Master Mintenance</span></a>
       </li>
       <li class="dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master Laporan</span></a>
