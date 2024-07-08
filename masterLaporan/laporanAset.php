@@ -37,7 +37,7 @@ require_once '../helper/connection.php';
 
                             <form method="POST" action="">
                                 <div class="form-inline">
-                                    <label>Tipe dan Jenis Aset : </label>
+                                    <label>Jenis Aset :</label>
                                     <select class="form-control" name="tipeAset">
                                         <option value="noFilter" <?php echo ($tipeAset == 'noFilter') ? 'selected' : ''; ?>>Tanpa Filter</option>
                                         <option value="elektronik" <?php echo ($tipeAset == 'elektronik') ? 'selected' : ''; ?>>Elektronik</option>
