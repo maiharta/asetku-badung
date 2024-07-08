@@ -6,8 +6,8 @@ $query = "SELECT * FROM `dataaset`";
 if (isset($_POST['filter'])) {
     $tipeAset = $_POST['tipeAset'];
 
-    if ($tipeAset == 'Komputer') {
-        $query .= " WHERE `tipeAset` LIKE 'komputer (elektronik)'";
+    if ($tipeAset == 'elektronik') {
+        $query .= " WHERE `tipeAset` LIKE '%(elektronik)'";
     } else if ($tipeAset == 'Kendaraan') {
         $query .= " WHERE `tipeAset` LIKE '%(kendaraan)'";
     }

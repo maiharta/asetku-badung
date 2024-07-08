@@ -40,7 +40,7 @@ require_once '../helper/connection.php';
                                     <label>Tipe dan Jenis Aset : </label>
                                     <select class="form-control" name="tipeAset">
                                         <option value="noFilter" <?php echo ($tipeAset == 'noFilter') ? 'selected' : ''; ?>>Tanpa Filter</option>
-                                        <option value="Komputer" <?php echo ($tipeAset == 'Komputer') ? 'selected' : ''; ?>>Komputer</option>
+                                        <option value="elektronik" <?php echo ($tipeAset == 'elektronik') ? 'selected' : ''; ?>>Elektronik</option>
                                         <option value="Kendaraan" <?php echo ($tipeAset == 'Kendaraan') ? 'selected' : ''; ?>>Kendaraan</option>
                                     </select>
                                     <div style="padding-left: 5px;">

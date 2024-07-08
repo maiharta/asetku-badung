@@ -42,9 +42,9 @@ $pdf->SetFont('helvetica', '', 10);
 $tipeAset = isset($_POST['tipeAset']) ? $_POST['tipeAset'] : 'noFilter';
 
 // Generate the title based on the filter
-$title = 'Daftar Barang Milik Daerah Kendaraan dan Peralatan Komputer Kantor Camat Kuta Utara';
-if ($tipeAset == 'Komputer') {
-    $title = 'Daftar Peralatan Komputer Kantor Camat Kuta Utara';
+$title = 'Daftar Barang Milik Daerah Kendaraan dan Peralatan elektronik Kantor Camat Kuta Utara';
+if ($tipeAset == 'elektronik') {
+    $title = 'Daftar Peralatan elektronik Kantor Camat Kuta Utara';
 } elseif ($tipeAset == 'Kendaraan') {
     $title = 'Daftar Kendaraan Kantor Camat Kuta Utara';
 }
@@ -82,10 +82,10 @@ $html .= '<table border="1" cellpadding="4">
 
 $query = "SELECT * FROM `dataaset`";
 if ($tipeAset) {
-    if ($tipeAset == 'Komputer') {
-        $query .= " WHERE `tipeAset` LIKE 'komputer (elektronik)'";
+    if ($tipeAset == 'elektronik') {
+        $query .= " WHERE `tipeAset` LIKE '%elektronik%'";
     } else if ($tipeAset == 'Kendaraan') {
-        $query .= " WHERE `tipeAset` LIKE '%(kendaraan)'";
+        $query .= " WHERE `tipeAset` LIKE '%Kendaraan%'";
     }
 }
 
@@ -119,8 +119,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 // Generate the titlePDF based on the filter
 $titlePDF = 'Laporan Semua Aset.pdf';
-if ($tipeAset == 'Komputer') {
-    $titlePDF = 'Laporan Aset Komputer.pdf';
+if ($tipeAset == 'elektronik') {
+    $titlePDF = 'Laporan Aset elektronik.pdf';
 } elseif ($tipeAset == 'Kendaraan') {
     $titlePDF = 'Laporan Aset Kendaraan.pdf';
 }
