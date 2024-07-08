@@ -117,6 +117,14 @@ $html .= '</tbody>
 // Print text using writeHTMLCell()
 $pdf->writeHTML($html, true, false, true, false, '');
 
+// Generate the titlePDF based on the filter
+$titlePDF = 'Laporan Semua Aset.pdf';
+if ($tipeAset == 'Komputer') {
+    $titlePDF = 'Laporan Aset Komputer.pdf';
+} elseif ($tipeAset == 'Kendaraan') {
+    $titlePDF = 'Laporan Aset Kendaraan.pdf';
+}
+
 // Close and output PDF document
-$pdf->Output('Laporan Aset.pdf', 'D');
+$pdf->Output($titlePDF, 'D');
 ?>
