@@ -38,12 +38,23 @@ $pdf->AddPage();
 // Set font
 $pdf->SetFont('helvetica', '', 10);
 
+// Capture the filter criteria
+$tipeAset = isset($_POST['tipeAset']) ? $_POST['tipeAset'] : 'noFilter';
+
+// Generate the title based on the filter
+$title = 'Daftar Barang Milik Daerah Kendaraan dan Peralatan Komputer Kantor Camat Kuta Utara';
+if ($tipeAset == 'Komputer') {
+    $title = 'Daftar Peralatan Komputer Kantor Camat Kuta Utara';
+} elseif ($tipeAset == 'Kendaraan') {
+    $title = 'Daftar Kendaraan Kantor Camat Kuta Utara';
+}
+
 // Add a title
-$html = '<h3 style="text-align: center;">Daftar Barang Milik Daerah Kendaraan dan Peralatan Komputer Kantor Camat Kuta Utara</h3>
+$html = '<h3 style="text-align: center;">' . $title . '</h3>
 <img src="../assets/img/PemKab_Badung.png" alt="logo" width="100" />
 <p style="line-height: 8px;"><strong>Provinsi :</strong> Bali</p>
 <p style="line-height: 2px;"><strong>Kab./Kota :</strong> PEMERINTAHAN KABUPATEN BADUNG</p>
-<p style="line-height: 2px;"><strong>Bidang :</strong> Gubernut/Bupati/Walikota</p>
+<p style="line-height: 2px;"><strong>Bidang :</strong> Gubernur/Bupati/Walikota</p>
 <p style="line-height: 2px;"><strong>Unit Organisasi :</strong> Kecamatan Kuta Utara</p>
 <p style="line-height: 2px;"><strong>Sub Unit Organisasi :</strong> Kecamatan Kuta Utara</p>
 <p style="line-height: 2px;"><strong>U P B :</strong> Kecamatan Kuta Utara</p>
