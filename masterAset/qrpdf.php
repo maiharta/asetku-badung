@@ -23,16 +23,11 @@ if ($query && mysqli_num_rows($query) > 0) {
     // Add the QR code image
     $pdf->Image($qrCodeImage, 75, 60, 50, 50, 'PNG', '', '', true, 150, '', false, false, 1, false, false, false);
 
-    // Display the asset name
-    $pdf->SetFont('helvetica', '', 12);
-    $pdf->SetXY(0, 110); // Adjust the position as needed
-    $pdf->Cell(0, 10, $row['namaAset'], 0, 1, 'C');
-
     // Set the line width to 2px
     $pdf->SetLineWidth(2);
 
     // Draw a 5px border around the entire content
-    $pdf->Rect(70, 15, 60, 120, 'D'); // Adjust the coordinates and dimensions as needed
+    $pdf->Rect(70, 15, 60, 100, 'D'); // Adjust the coordinates and dimensions as needed
 
     ob_end_clean();
     $namaAset = $row['namaAset'];
